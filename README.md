@@ -5,7 +5,8 @@ Lộ trình 32 buổi (16/11/2026 – 17/03/2027) và 20 bài Mini Test cho họ
 - `gioi-thieu.html`: trang giới thiệu khoá, ai cũng xem được.
 - `index.html`: trang lộ trình của học viên. Phải đăng nhập Google bằng Gmail cô đã kích hoạt.
 - `mt/`: 20 bài Mini Test (Reading Mini Test 1–4, Part 5, Part 6, Part 7 và Part 7 Full Test). Phải đăng nhập như trên.
-- `quan-ly.html`: trang cô thêm, khoá, gia hạn học viên. Chỉ tài khoản giáo viên của My English Workspace đăng nhập được.
+- `quan-ly.html`: trang cô thêm, khoá, gia hạn học viên, đặt link Zoom/Meet và xem tiến độ cả lớp. Chỉ tài khoản giáo viên của My English Workspace đăng nhập được.
+- `t5.js`: lưu tiến độ học viên lên Firebase và chế độ **thi thật** (thêm `?thi=1` sau link Mini Test: ẩn đáp án tới khi nộp, bấm giờ, tự lưu điểm).
 
 Nội dung trang học viên và Mini Test được mã hoá. Ai mở file trên GitHub cũng chỉ thấy chuỗi ký tự, không đọc được bài.
 
@@ -37,7 +38,20 @@ Dán đoạn dưới vào **bên trong** khối `match /databases/{database}/doc
       allow read: if t500Teacher() || t500Active();
       allow write: if t500Teacher();
     }
+    match /t500_progress/{email} {
+      allow read: if t500Teacher()
+        || (request.auth != null && request.auth.token.email.lower() == email);
+      allow create, update: if request.auth != null
+        && request.auth.token.email.lower() == email && t500Active();
+      allow delete: if t500Teacher();
+    }
+    match /t500_config/{doc} {
+      allow read: if t500Teacher() || t500Active();
+      allow write: if t500Teacher();
+    }
 ```
+
+(Rules này đã được cài trên Firebase ngày 03/11/2026.)
 
 ### 2. Cài mã giải mã
 

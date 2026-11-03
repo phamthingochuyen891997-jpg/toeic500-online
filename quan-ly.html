@@ -26,7 +26,7 @@ td .e{font-weight:600;word-break:break-all}td .n{color:var(--muted);font-size:.8
 .login{max-width:400px;margin:60px auto}
 .hide{display:none}
 .tip{background:var(--soft);border-radius:12px;padding:10px 12px;font-size:.88rem;color:var(--deep)}
-@media (max-width:640px){th:nth-child(3),td:nth-child(3){display:none}}
+@media (max-width:640px){th:nth-child(3),td:nth-child(3){display:none}.pt th:nth-child(3),.pt td:nth-child(3){display:table-cell}}
 </style></head><body><div class="wrap">
 <header><div class="mark">500+</div><div><h1>Quản lý học viên</h1><small>Lớp TOEIC Online 500+ (K16/11/2026) · chỉ cô Huyền đăng nhập được</small></div><div class="sp"></div><button class="btn ghost sm hide" id="out">Đăng xuất</button></header>
 
@@ -57,6 +57,14 @@ td .e{font-weight:600;word-break:break-all}td .n{color:var(--muted);font-size:.8
 <div class="row" style="margin:0"><input id="q" placeholder="Tìm theo tên, Gmail, SĐT…" style="width:220px"><button class="btn ghost sm" id="csv">Tải Excel (CSV)</button></div></div>
 <div style="overflow-x:auto;margin-top:10px"><table><thead><tr><th>Học viên</th><th>Trạng thái</th><th>Ngày thêm · ghi chú</th><th></th></tr></thead><tbody id="tb"><tr><td colspan="4">Đang tải…</td></tr></tbody></table></div></div>
 
+<div class="card"><h2>🎥 Link lớp học</h2>
+<p style="font-size:.9rem;color:var(--muted);margin-top:0">Link Zoom/Meet hiện thành nút <b>Vào lớp học</b> trên trang lộ trình của học viên (chỉ học viên đã kích hoạt thấy).</p>
+<div class="grid"><label>Link Zoom / Google Meet<input id="zLink" placeholder="https://zoom.us/j/…"></label><label>Ghi chú (ID, mật khẩu phòng…)<input id="zNote" placeholder="ID 123 456 7890 · Pass 500"></label></div>
+<div class="row"><button class="btn" id="zSave">Lưu link</button><span class="msg" id="zMsg"></span></div></div>
+
+<div class="card"><div class="row" style="margin-top:0;justify-content:space-between"><h2 style="margin:0">📈 Tiến độ học viên</h2><button class="btn ghost sm" id="pReload">Tải lại</button></div>
+<p style="font-size:.88rem;color:var(--muted)">Cập nhật mỗi khi học viên đánh dấu bài tập, nhập điểm hoặc nộp bài thi thật.</p>
+<div style="overflow-x:auto"><table class="pt"><thead><tr><th>Học viên</th><th>Bài tập</th><th>Điểm các mốc</th><th>Thi thật gần nhất</th><th>Cập nhật</th></tr></thead><tbody id="pb"><tr><td colspan="5">Đang tải…</td></tr></tbody></table></div></div>
 <div class="card"><h2>🔑 Cài đặt khóa học</h2>
 <div class="tip">Học viên chỉ cần: mở link khóa học → bấm <b>Đăng nhập bằng Google</b> → chọn đúng Gmail đã gửi cô. Muốn chặn em nào, bấm <b>Khóa</b> (lần mở trang tiếp theo em đó sẽ không vào được, chậm nhất sau 20 phút).</div>
 <p id="keyState" style="font-size:.9rem;color:var(--muted)"></p>
@@ -87,7 +95,7 @@ onAuthStateChanged(auth,async u=>{
   try{ const p=await getDoc(doc(db,"users",u.uid)); if(!p.exists()||p.data().role!=="teacher") throw 0; }
   catch(e){ $("lm").textContent="Tài khoản này không phải giáo viên."; await signOut(auth); return; }
   $("loginBox").classList.add("hide"); $("app").classList.remove("hide"); $("out").classList.remove("hide");
-  load(); keyState();
+  load().then(loadProg); keyState(); loadCfg();
 });
 async function keyState(){ try{ const s=await getDoc(doc(db,"t500_secret","key")); $("keyState").innerHTML=s.exists()?"✅ Mã giải mã đã được cài – khóa học đang hoạt động.":"⚠️ Chưa cài mã giải mã – học viên chưa mở được tài liệu."; }catch(e){ $("keyState").textContent="Không đọc được cài đặt ("+e.code+")."; } }
 $("kb").onclick=async()=>{ const c=$("kc").value.trim(); if(c.length<12) return msg("km","Mã quá ngắn.");
@@ -108,6 +116,21 @@ function render(){
   <td><div class="n">${fmt(r.addedAt)}</div><div class="n">${esc(r.note)}</div></td>
   <td><div class="tools"><button class="btn ghost sm" data-a="lock" data-id="${esc(r.id)}">${r.locked?"Mở khóa":"Khóa"}</button><button class="btn ghost sm" data-a="ext" data-id="${esc(r.id)}">Gia hạn</button><button class="btn ghost sm" data-a="del" data-id="${esc(r.id)}">Xóa</button></div></td></tr>`).join(""):'<tr><td colspan="4">Chưa có học viên nào.</td></tr>';
 }
+
+const MSN={dv:"Đầu vào",m1:"Mốc 1",m2:"Mốc 2",m3:"Mốc 3",end:"Cuối khoá"};
+async function loadCfg(){ try{ const s=await getDoc(doc(db,"t500_config","class")); if(s.exists()){ $("zLink").value=s.data().zoom||""; $("zNote").value=s.data().note||""; } }catch(e){ msg("zMsg","Chưa đọc được ("+e.code+")."); } }
+$("zSave").onclick=async()=>{ const z=$("zLink").value.trim(); if(z&&!/^https?:\/\//.test(z)) return msg("zMsg","Link phải bắt đầu bằng https://");
+  try{ await setDoc(doc(db,"t500_config","class"),{zoom:z,note:$("zNote").value.trim(),updatedAt:serverTimestamp()}); msg("zMsg","Đã lưu ✓",1);}catch(e){ msg("zMsg","Lỗi: "+e.code); } };
+async function loadProg(){
+  try{ const s=await getDocs(collection(db,"t500_progress")); const P=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.updatedAt?.toMillis?.()||0)-(a.updatedAt?.toMillis?.()||0));
+    $("pb").innerHTML=P.length?P.map(p=>{ const st=rows.find(r=>r.id===p.id); const nm=st?st.name:(p.name||p.id);
+      const sc=Object.entries(p.scores||{}).map(([k,v])=>`${MSN[k]||k}: <b>${esc(v)}</b>`).join("<br>")||"–";
+      const ex=Object.values(p.exams||{}).sort((a,b)=>b.at-a.at).slice(0,3).map(e=>`${esc(e.title)}: <b>${e.correct}/${e.total}</b>`).join("<br>")||"–";
+      const pct=p.total?Math.round((p.doneCount||0)/p.total*100):0;
+      return `<tr><td><div class="e">${esc(nm)}</div><div class="n">${esc(p.id)}</div></td><td><b>${p.doneCount||0}/${p.total||"?"}</b><div class="n">${pct}%</div></td><td><div class="n" style="color:inherit">${sc}</div></td><td><div class="n" style="color:inherit">${ex}</div></td><td><div class="n">${fmt(p.updatedAt)}</div></td></tr>`; }).join(""):'<tr><td colspan="5">Chưa có học viên nào cập nhật tiến độ.</td></tr>';
+  }catch(e){ $("pb").innerHTML=`<tr><td colspan="5">Không tải được tiến độ (${esc(e.code)}).</td></tr>`; }
+}
+$("pReload").onclick=loadProg;
 $("q").oninput=render;
 $("tb").onclick=async e=>{ const b=e.target.closest("button"); if(!b) return; const id=b.dataset.id, r=rows.find(x=>x.id===id); b.disabled=true;
   try{
