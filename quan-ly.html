@@ -1,0 +1,135 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Quản lý học viên · TOEIC Online 500+</title><meta name="robots" content="noindex">
+<style>
+:root{--bg:#FFF7FA;--card:#fff;--ink:#36141F;--muted:#85596B;--line:#F1CEDB;--accent:#C41F63;--deep:#8E1446;--bad:#B4232C;--ok:#1E7A4D;--soft:#FDE8F0}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "DM Sans","Segoe UI",system-ui,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:20px 16px 60px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:18px}.mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--deep),var(--accent));color:#fff;display:grid;place-items:center;font:700 12px Georgia,serif}
+h1{font:700 1.35rem Georgia,serif;margin:0}header small{display:block;color:var(--muted)}header .sp{flex:1}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:16px;box-shadow:0 4px 18px rgba(120,20,60,.06)}
+h2{font:700 1.05rem Georgia,serif;margin:0 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+label{display:grid;gap:4px;font-weight:600;font-size:.85rem}
+input,textarea{font:inherit;color:inherit;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 11px;width:100%}
+textarea{min-height:90px}
+.btn{font:inherit;font-weight:700;border:0;border-radius:999px;padding:9px 18px;background:var(--accent);color:#fff;cursor:pointer}
+.btn.ghost{background:#fff;color:var(--accent);border:1px solid var(--line)}.btn.sm{padding:5px 12px;font-size:.85rem}
+.btn:disabled{opacity:.55}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px}
+.msg{font-size:.9rem;min-height:1.2em}.msg.ok{color:var(--ok)}.msg.bad{color:var(--bad)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:16px}
+.stat{background:linear-gradient(135deg,var(--deep),var(--accent));color:#fff;border-radius:16px;padding:14px}.stat b{display:block;font-size:1.5rem}.stat span{font-size:.85rem;opacity:.9}
+table{width:100%;border-collapse:collapse;font-size:.9rem}th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--muted);font-weight:600;font-size:.8rem}
+td .e{font-weight:600;word-break:break-all}td .n{color:var(--muted);font-size:.83rem}
+.tag{display:inline-block;border-radius:999px;padding:1px 9px;font-size:.78rem;font-weight:700}.tag.on{background:#E3F4EA;color:var(--ok)}.tag.off{background:#FBE3E5;color:var(--bad)}
+.tools{display:flex;gap:6px;flex-wrap:wrap}
+.login{max-width:400px;margin:60px auto}
+.hide{display:none}
+.tip{background:var(--soft);border-radius:12px;padding:10px 12px;font-size:.88rem;color:var(--deep)}
+@media (max-width:640px){th:nth-child(3),td:nth-child(3){display:none}}
+</style></head><body><div class="wrap">
+<header><div class="mark">500+</div><div><h1>Quản lý học viên</h1><small>Lớp TOEIC Online 500+ (K16/11/2026) · chỉ cô Huyền đăng nhập được</small></div><div class="sp"></div><button class="btn ghost sm hide" id="out">Đăng xuất</button></header>
+
+<div id="loginBox" class="card login"><h2>Đăng nhập giáo viên</h2>
+<p style="color:var(--muted);font-size:.9rem;margin-top:0">Dùng tài khoản giáo viên của trang My English Workspace (email + mật khẩu).</p>
+<form id="lf"><label>Email<input id="le" type="email" required autocomplete="username"></label>
+<label style="margin-top:8px">Mật khẩu<input id="lp" type="password" required autocomplete="current-password"></label>
+<div class="row"><button class="btn" id="lb">Đăng nhập</button></div><div class="msg bad" id="lm"></div></form></div>
+
+<div id="app" class="hide">
+<div class="stats"><div class="stat"><b id="sAll">0</b><span>học viên đang học</span></div><div class="stat"><b id="sMonth">0</b><span>đăng ký tháng này</span></div><div class="stat"><b id="sExp">0</b><span>đã hết hạn / tạm khóa</span></div></div>
+
+<div class="card"><h2>➕ Thêm học viên</h2>
+<form id="af"><div class="grid">
+<label>Gmail học viên *<input id="aEmail" type="email" required placeholder="vidu@gmail.com"></label>
+<label>Họ và tên *<input id="aName" required placeholder="Nguyễn Minh Anh"></label>
+<label>SĐT / Zalo<input id="aPhone" placeholder="09xx…"></label>
+<label>Hạn dùng<input id="aUntil" type="date"></label>
+</div><label style="margin-top:10px">Ghi chú<input id="aNote" placeholder="VD: đã CK ngày 10/11, sinh viên năm 3…"></label>
+<div class="row"><button class="btn" id="ab">Thêm & kích hoạt</button><span class="msg" id="am"></span></div></form>
+<details style="margin-top:12px"><summary style="cursor:pointer;color:var(--accent);font-weight:600">Thêm nhiều học viên cùng lúc</summary>
+<p style="font-size:.88rem;color:var(--muted)">Mỗi dòng một học viên: <code>gmail, họ tên, sđt</code> (sđt có thể bỏ trống).</p>
+<textarea id="bulk" placeholder="an.nguyen@gmail.com, Nguyễn Minh An, 0901234567&#10;binh.tran@gmail.com, Trần Thanh Bình"></textarea>
+<div class="row"><button class="btn ghost" id="bb">Thêm danh sách</button><span class="msg" id="bm"></span></div></details>
+</div>
+
+<div class="card"><div class="row" style="margin-top:0;justify-content:space-between"><h2 style="margin:0">📋 Danh sách học viên</h2>
+<div class="row" style="margin:0"><input id="q" placeholder="Tìm theo tên, Gmail, SĐT…" style="width:220px"><button class="btn ghost sm" id="csv">Tải Excel (CSV)</button></div></div>
+<div style="overflow-x:auto;margin-top:10px"><table><thead><tr><th>Học viên</th><th>Trạng thái</th><th>Ngày thêm · ghi chú</th><th></th></tr></thead><tbody id="tb"><tr><td colspan="4">Đang tải…</td></tr></tbody></table></div></div>
+
+<div class="card"><h2>🔑 Cài đặt khóa học</h2>
+<div class="tip">Học viên chỉ cần: mở link khóa học → bấm <b>Đăng nhập bằng Google</b> → chọn đúng Gmail đã gửi cô. Muốn chặn em nào, bấm <b>Khóa</b> (lần mở trang tiếp theo em đó sẽ không vào được, chậm nhất sau 20 phút).</div>
+<p id="keyState" style="font-size:.9rem;color:var(--muted)"></p>
+<details><summary style="cursor:pointer;color:var(--accent);font-weight:600">Nhập / đổi mã giải mã tài liệu (chỉ khi em Claude hướng dẫn)</summary>
+<div class="row"><input id="kc" placeholder="Mã giải mã" style="max-width:340px"><button class="btn ghost sm" id="kb">Lưu mã</button><span class="msg" id="km"></span></div></details>
+</div>
+</div>
+</div>
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {getAuth,signInWithEmailAndPassword,onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {getFirestore,doc,getDoc,setDoc,updateDoc,deleteDoc,collection,getDocs,Timestamp,serverTimestamp,writeBatch} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+const app=initializeApp({apiKey:"AIzaSyACo9wh9u1VZdBKh3cNVfdO7L3qZ_aOIsI",authDomain:"my-english-workspace-cf8d7.firebaseapp.com",projectId:"my-english-workspace-cf8d7",storageBucket:"my-english-workspace-cf8d7.firebasestorage.app",messagingSenderId:"989721870907",appId:"1:989721870907:web:e25d3c69a8e682d399d21e"});
+const auth=getAuth(app), db=getFirestore(app), $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[<>&"]/g,c=>({"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c]));
+const DEF_UNTIL="2027-05-31"; $("aUntil").value=DEF_UNTIL;
+const toTs=d=>Timestamp.fromDate(new Date((d||DEF_UNTIL)+"T23:59:59+07:00"));
+const fmt=ts=>ts&&ts.toDate?ts.toDate().toLocaleDateString("vi-VN"):"–";
+const okEmail=e=>/^[^\s@,]+@[^\s@,]+\.[^\s@,]+$/.test(e);
+let rows=[];
+function msg(id,t,ok){ const m=$(id); m.textContent=t; m.className="msg "+(ok?"ok":"bad"); }
+$("lf").onsubmit=async e=>{ e.preventDefault(); $("lb").disabled=true; $("lm").textContent="";
+  try{ await signInWithEmailAndPassword(auth,$("le").value.trim(),$("lp").value); }catch(x){ $("lm").textContent="Sai email hoặc mật khẩu."; }
+  $("lb").disabled=false; };
+$("out").onclick=()=>signOut(auth);
+onAuthStateChanged(auth,async u=>{
+  if(!u){ $("loginBox").classList.remove("hide"); $("app").classList.add("hide"); $("out").classList.add("hide"); return; }
+  try{ const p=await getDoc(doc(db,"users",u.uid)); if(!p.exists()||p.data().role!=="teacher") throw 0; }
+  catch(e){ $("lm").textContent="Tài khoản này không phải giáo viên."; await signOut(auth); return; }
+  $("loginBox").classList.add("hide"); $("app").classList.remove("hide"); $("out").classList.remove("hide");
+  load(); keyState();
+});
+async function keyState(){ try{ const s=await getDoc(doc(db,"t500_secret","key")); $("keyState").innerHTML=s.exists()?"✅ Mã giải mã đã được cài – khóa học đang hoạt động.":"⚠️ Chưa cài mã giải mã – học viên chưa mở được tài liệu."; }catch(e){ $("keyState").textContent="Không đọc được cài đặt ("+e.code+")."; } }
+$("kb").onclick=async()=>{ const c=$("kc").value.trim(); if(c.length<12) return msg("km","Mã quá ngắn.");
+  try{ await setDoc(doc(db,"t500_secret","key"),{code:c,updatedAt:serverTimestamp()}); $("kc").value=""; msg("km","Đã lưu.",1); keyState(); }catch(e){ msg("km","Lỗi: "+e.code); } };
+async function load(){
+  try{ const s=await getDocs(collection(db,"t500_students")); rows=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.addedAt?.toMillis?.()||0)-(a.addedAt?.toMillis?.()||0)); render(); }
+  catch(e){ $("tb").innerHTML=`<tr><td colspan="4">Không tải được danh sách (${esc(e.code)}). Kiểm tra lại Rules trên Firebase.</td></tr>`; }
+}
+const active=r=>!r.locked&&(!r.until||r.until.toMillis()>Date.now());
+function render(){
+  const q=$("q").value.trim().toLowerCase(); const now=new Date();
+  $("sAll").textContent=rows.filter(active).length;
+  $("sMonth").textContent=rows.filter(r=>{const d=r.addedAt?.toDate?.(); return d&&d.getMonth()===now.getMonth()&&d.getFullYear()===now.getFullYear();}).length;
+  $("sExp").textContent=rows.filter(r=>!active(r)).length;
+  const list=rows.filter(r=>!q||[r.id,r.name,r.phone,r.note].join(" ").toLowerCase().includes(q));
+  $("tb").innerHTML=list.length?list.map(r=>`<tr><td><div class="e">${esc(r.name)}</div><div class="n">${esc(r.id)}${r.phone?" · "+esc(r.phone):""}</div></td>
+  <td>${active(r)?'<span class="tag on">Đang học</span>':(r.locked?'<span class="tag off">Đã khóa</span>':'<span class="tag off">Hết hạn</span>')}<div class="n">đến ${fmt(r.until)}</div></td>
+  <td><div class="n">${fmt(r.addedAt)}</div><div class="n">${esc(r.note)}</div></td>
+  <td><div class="tools"><button class="btn ghost sm" data-a="lock" data-id="${esc(r.id)}">${r.locked?"Mở khóa":"Khóa"}</button><button class="btn ghost sm" data-a="ext" data-id="${esc(r.id)}">Gia hạn</button><button class="btn ghost sm" data-a="del" data-id="${esc(r.id)}">Xóa</button></div></td></tr>`).join(""):'<tr><td colspan="4">Chưa có học viên nào.</td></tr>';
+}
+$("q").oninput=render;
+$("tb").onclick=async e=>{ const b=e.target.closest("button"); if(!b) return; const id=b.dataset.id, r=rows.find(x=>x.id===id); b.disabled=true;
+  try{
+    if(b.dataset.a==="lock") await updateDoc(doc(db,"t500_students",id),{locked:!r.locked});
+    if(b.dataset.a==="ext"){ const base=r.until&&r.until.toMillis()>Date.now()?r.until.toDate():new Date(); base.setMonth(base.getMonth()+3); await updateDoc(doc(db,"t500_students",id),{until:Timestamp.fromDate(base)}); }
+    if(b.dataset.a==="del"){ if(b.dataset.sure!=="1"){ b.dataset.sure="1"; b.textContent="Bấm lần nữa để xóa"; b.disabled=false; return; } await deleteDoc(doc(db,"t500_students",id)); }
+    await load();
+  }catch(x){ b.disabled=false; alertMsg("Lỗi: "+x.code); } };
+function alertMsg(t){ msg("am",t); }
+function rec(email,name,phone,note,until){ return {name,phone:phone||"",note:note||"",until:toTs(until),locked:false,addedAt:serverTimestamp()}; }
+$("af").onsubmit=async e=>{ e.preventDefault(); const email=$("aEmail").value.trim().toLowerCase(), name=$("aName").value.trim();
+  if(!okEmail(email)||!name) return msg("am","Kiểm tra lại Gmail và họ tên.");
+  if(rows.some(r=>r.id===email)) return msg("am","Gmail này đã có trong danh sách.");
+  $("ab").disabled=true;
+  try{ await setDoc(doc(db,"t500_students",email),rec(email,name,$("aPhone").value.trim(),$("aNote").value.trim(),$("aUntil").value)); msg("am","Đã kích hoạt "+email+" ✓",1);
+    ["aEmail","aName","aPhone","aNote"].forEach(i=>$(i).value=""); await load(); }
+  catch(x){ msg("am","Lỗi: "+x.code); } $("ab").disabled=false; };
+$("bb").onclick=async()=>{ const lines=$("bulk").value.split(/\n/).map(l=>l.trim()).filter(Boolean); const b=writeBatch(db); let n=0, bad=[];
+  for(const l of lines){ const [e,nm,ph]=l.split(/[,;\t]/).map(s=>(s||"").trim()); const email=(e||"").toLowerCase();
+    if(!okEmail(email)||!nm){ bad.push(l); continue; } if(rows.some(r=>r.id===email)) continue; b.set(doc(db,"t500_students",email),rec(email,nm,ph,"",$("aUntil").value)); n++; }
+  try{ if(n) await b.commit(); msg("bm",`Đã thêm ${n} học viên.`+(bad.length?` ${bad.length} dòng sai định dạng.`:""),!bad.length); if(!bad.length) $("bulk").value=""; await load(); }catch(x){ msg("bm","Lỗi: "+x.code); } };
+$("csv").onclick=()=>{ const h=["Gmail","Họ tên","SĐT","Trạng thái","Hạn dùng","Ngày thêm","Ghi chú"];
+  const L=[h,...rows.map(r=>[r.id,r.name,r.phone,active(r)?"Đang học":(r.locked?"Đã khóa":"Hết hạn"),fmt(r.until),fmt(r.addedAt),r.note])].map(a=>a.map(v=>'"'+String(v??"").replace(/"/g,'""')+'"').join(","));
+  const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob(["﻿"+L.join("\n")],{type:"text/csv"})); a.download="hoc-vien-toeic-500.csv"; a.click(); };
+</script></body></html>
