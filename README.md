@@ -4,7 +4,8 @@ Lộ trình 32 buổi (16/11/2026 – 17/03/2027) và 20 bài Mini Test cho họ
 
 - `gioi-thieu.html`: trang giới thiệu khoá, ai cũng xem được.
 - `index.html`: trang lộ trình của học viên. Phải đăng nhập Google bằng Gmail cô đã kích hoạt.
-- `mt/`: 20 bài Mini Test (Reading Mini Test 1–4, Part 5, Part 6, Part 7 và Part 7 Full Test). Phải đăng nhập như trên.
+- `reading.html`: **Lộ trình Mini-Test Reading** – 1 link gom 31 bài (Part 5, 6, 7 Mini Test 01–10 + Part 7 Full Test), chia 3 chặng theo tuần, hiện điểm thi thật của từng học viên. Phải đăng nhập như trên.
+- `mt/`: các bài Mini Test (Reading Mini Test 1–4, Part 5/6/7 Mini Test 01–10, Part 7 Full Test). Phải đăng nhập như trên.
 - `quan-ly.html`: trang cô thêm, khoá, gia hạn học viên, đặt link Zoom/Meet và xem tiến độ cả lớp. Chỉ tài khoản giáo viên của My English Workspace đăng nhập được.
 - `t5.js`: lưu tiến độ học viên lên Firebase và chế độ **thi thật** (thêm `?thi=1` sau link Mini Test: ẩn đáp án tới khi nộp, bấm giờ, tự lưu điểm).
 
@@ -57,6 +58,8 @@ Dán đoạn dưới vào **bên trong** khối `match /databases/{database}/doc
 
 Mở `quan-ly.html` → đăng nhập tài khoản giáo viên → mục **Cài đặt khoá học** → **Nhập / đổi mã giải mã** → dán mã em Claude gửi → **Lưu mã**.
 Mã không nằm trong repo này. Không chia sẻ mã cho ai.
+
+`reading.html` và Mini Test 06–10 dùng **mã Reading riêng** (lưu ở `t500_secret/reading`). Cài ở `quan-ly.html` → **Nhập / đổi mã Lộ trình Mini-Test Reading**. Rules hiện có đã cho phép, không cần sửa.
 
 ### 3. Thêm học viên
 

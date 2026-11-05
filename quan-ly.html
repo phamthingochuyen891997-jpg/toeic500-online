@@ -70,6 +70,9 @@ td .e{font-weight:600;word-break:break-all}td .n{color:var(--muted);font-size:.8
 <p id="keyState" style="font-size:.9rem;color:var(--muted)"></p>
 <details><summary style="cursor:pointer;color:var(--accent);font-weight:600">Nhập / đổi mã giải mã tài liệu (chỉ khi em Claude hướng dẫn)</summary>
 <div class="row"><input id="kc" placeholder="Mã giải mã" style="max-width:340px"><button class="btn ghost sm" id="kb">Lưu mã</button><span class="msg" id="km"></span></div></details>
+<p id="rkState" style="font-size:.9rem;color:var(--muted);margin-top:14px"></p>
+<details><summary style="cursor:pointer;color:var(--accent);font-weight:600">Nhập / đổi mã Lộ trình Mini-Test Reading (reading.html)</summary>
+<div class="row"><input id="rkc" placeholder="Mã Reading (bắt đầu bằng R5-)" style="max-width:340px"><button class="btn ghost sm" id="rkb">Lưu mã Reading</button><span class="msg" id="rkm"></span></div></details>
 </div>
 </div>
 </div>
@@ -95,9 +98,12 @@ onAuthStateChanged(auth,async u=>{
   try{ const p=await getDoc(doc(db,"users",u.uid)); if(!p.exists()||p.data().role!=="teacher") throw 0; }
   catch(e){ $("lm").textContent="Tài khoản này không phải giáo viên."; await signOut(auth); return; }
   $("loginBox").classList.add("hide"); $("app").classList.remove("hide"); $("out").classList.remove("hide");
-  load().then(loadProg); keyState(); loadCfg();
+  load().then(loadProg); keyState(); rkState(); loadCfg();
 });
 async function keyState(){ try{ const s=await getDoc(doc(db,"t500_secret","key")); $("keyState").innerHTML=s.exists()?"✅ Mã giải mã đã được cài – khóa học đang hoạt động.":"⚠️ Chưa cài mã giải mã – học viên chưa mở được tài liệu."; }catch(e){ $("keyState").textContent="Không đọc được cài đặt ("+e.code+")."; } }
+async function rkState(){ try{ const s=await getDoc(doc(db,"t500_secret","reading")); $("rkState").innerHTML=s.exists()?"✅ Mã Reading đã cài – học viên mở được Lộ trình Mini-Test Reading.":"⚠️ Chưa cài mã Reading – học viên chưa mở được reading.html và Mini Test 06–10."; }catch(e){ $("rkState").textContent="Không đọc được mã Reading ("+e.code+")."; } }
+$("rkb").onclick=async()=>{ const c=$("rkc").value.trim(); if(c.length<12) return msg("rkm","Mã quá ngắn.");
+  try{ await setDoc(doc(db,"t500_secret","reading"),{code:c,updatedAt:serverTimestamp()}); $("rkc").value=""; msg("rkm","Đã lưu.",1); rkState(); }catch(e){ msg("rkm","Lỗi: "+e.code); } };
 $("kb").onclick=async()=>{ const c=$("kc").value.trim(); if(c.length<12) return msg("km","Mã quá ngắn.");
   try{ await setDoc(doc(db,"t500_secret","key"),{code:c,updatedAt:serverTimestamp()}); $("kc").value=""; msg("km","Đã lưu.",1); keyState(); }catch(e){ msg("km","Lỗi: "+e.code); } };
 async function load(){
