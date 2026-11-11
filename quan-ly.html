@@ -65,6 +65,9 @@ td .e{font-weight:600;word-break:break-all}td .n{color:var(--muted);font-size:.8
 <div class="card"><div class="row" style="margin-top:0;justify-content:space-between"><h2 style="margin:0">📈 Tiến độ học viên</h2><button class="btn ghost sm" id="pReload">Tải lại</button></div>
 <p style="font-size:.88rem;color:var(--muted)">Cập nhật mỗi khi học viên đánh dấu bài tập, nhập điểm hoặc nộp bài thi thật.</p>
 <div style="overflow-x:auto"><table class="pt"><thead><tr><th>Học viên</th><th>Bài tập</th><th>Điểm các mốc</th><th>Thi thật gần nhất</th><th>Cập nhật</th></tr></thead><tbody id="pb"><tr><td colspan="5">Đang tải…</td></tr></tbody></table></div></div>
+<div class="card"><div class="row" style="margin-top:0;justify-content:space-between"><h2 style="margin:0">🏆 Vinh danh tuần</h2><button class="btn sm" id="vCopy">📋 Copy tin nhắn Zalo</button></div>
+<p style="font-size:.88rem;color:var(--muted)">Xếp hạng theo số bài làm trong 7 ngày qua, chuỗi ngày học và điểm thi thật. Dán vào nhóm lớp mỗi Chủ nhật để khen các em.</p>
+<div style="overflow-x:auto"><table class="pt"><thead><tr><th>#</th><th>Học viên</th><th>Bài 7 ngày</th><th>Chuỗi</th><th>Thi thật tốt nhất</th></tr></thead><tbody id="vb"><tr><td colspan="5">Đang tải…</td></tr></tbody></table></div><span class="msg" id="vMsg"></span></div>
 <div class="card"><h2>🔑 Cài đặt khóa học</h2>
 <div class="tip">Học viên chỉ cần: mở link khóa học → bấm <b>Đăng nhập bằng Google</b> → chọn đúng Gmail đã gửi cô. Muốn chặn em nào, bấm <b>Khóa</b> (lần mở trang tiếp theo em đó sẽ không vào được, chậm nhất sau 20 phút).</div>
 <p id="keyState" style="font-size:.9rem;color:var(--muted)"></p>
@@ -129,6 +132,13 @@ $("zSave").onclick=async()=>{ const z=$("zLink").value.trim(); if(z&&!/^https?:\
   try{ await setDoc(doc(db,"t500_config","class"),{zoom:z,note:$("zNote").value.trim(),updatedAt:serverTimestamp()}); msg("zMsg","Đã lưu ✓",1);}catch(e){ msg("zMsg","Lỗi: "+e.code); } };
 async function loadProg(){
   try{ const s=await getDocs(collection(db,"t500_progress")); const P=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.updatedAt?.toMillis?.()||0)-(a.updatedAt?.toMillis?.()||0));
+    const now=Date.now(),dk=t=>new Date(t+7*3600e3).toISOString().slice(0,10);
+    const V=P.map(p=>{const st=rows.find(r=>r.id===p.id);const nm=st?st.name:(p.name||p.id);const ts=Object.values(p.done||{}).filter(v=>v>1e12);Object.values(p.exams||{}).forEach(e=>e.at&&ts.push(e.at));
+      const days=new Set(ts.map(dk));let s=0,t=now;if(!days.has(dk(t)))t-=864e5;while(days.has(dk(t))){s++;t-=864e5}
+      const best=Object.values(p.exams||{}).reduce((m,e)=>e.total&&e.correct/e.total>m.r?{r:e.correct/e.total,t:e.title,c:e.correct,n:e.total}:m,{r:0});
+      return {nm,week:ts.filter(x=>now-x<7*864e5).length,s,best}}).sort((a,b)=>b.week-a.week||b.s-a.s||b.best.r-a.best.r);
+    window._V=V;
+    $("vb").innerHTML=V.length?V.map((v,i)=>`<tr><td>${["🥇","🥈","🥉"][i]||i+1}</td><td>${esc(v.nm)}</td><td><b>${v.week}</b></td><td>${v.s?"🔥 "+v.s+" ngày":"–"}</td><td>${v.best.r?esc(v.best.t)+": <b>"+v.best.c+"/"+v.best.n+"</b>":"–"}</td></tr>`).join(""):'<tr><td colspan="5">Chưa có dữ liệu.</td></tr>';
     $("pb").innerHTML=P.length?P.map(p=>{ const st=rows.find(r=>r.id===p.id); const nm=st?st.name:(p.name||p.id);
       const sc=Object.entries(p.scores||{}).map(([k,v])=>`${MSN[k]||k}: <b>${esc(v)}</b>`).join("<br>")||"–";
       const ex=Object.values(p.exams||{}).sort((a,b)=>b.at-a.at).slice(0,3).map(e=>`${esc(e.title)}: <b>${e.correct}/${e.total}</b>`).join("<br>")||"–";
@@ -161,4 +171,10 @@ $("bb").onclick=async()=>{ const lines=$("bulk").value.split(/\n/).map(l=>l.trim
 $("csv").onclick=()=>{ const h=["Gmail","Họ tên","SĐT","Trạng thái","Hạn dùng","Ngày thêm","Ghi chú"];
   const L=[h,...rows.map(r=>[r.id,r.name,r.phone,active(r)?"Đang học":(r.locked?"Đã khóa":"Hết hạn"),fmt(r.until),fmt(r.addedAt),r.note])].map(a=>a.map(v=>'"'+String(v??"").replace(/"/g,'""')+'"').join(","));
   const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob(["﻿"+L.join("\n")],{type:"text/csv"})); a.download="hoc-vien-toeic-500.csv"; a.click(); };
+
+$("vCopy").onclick=async()=>{const V=(window._V||[]).filter(v=>v.week>0||v.s>0);if(!V.length){$("vMsg").textContent="Tuần này chưa có ai làm bài.";return}
+  const top=V.slice(0,3).map((v,i)=>`${["🥇","🥈","🥉"][i]} ${v.nm}: ${v.week} bài${v.s>=2?` · chuỗi ${v.s} ngày 🔥`:""}`).join("\n");
+  const streak=V.filter(v=>v.s>=3).map(v=>v.nm);const hi=(window._V||[]).filter(v=>v.best.r>=.8).map(v=>v.nm);
+  const t=`🏆 VINH DANH TUẦN · TOEIC 500+\n\n${top}${streak.length?`\n\n🔥 Giữ chuỗi học từ 3 ngày: ${streak.join(", ")}`:""}${hi.length?`\n🏅 Thi thật đạt từ 80%: ${hi.join(", ")}`:""}\n\nCô khen cả lớp! Ai chưa có tên tuần này thì tuần sau mình bứt lên nhé, mỗi ngày chỉ cần 1 bài 💪\n👉 https://phamthingochuyen891997-jpg.github.io/toeic500-online/`;
+  try{await navigator.clipboard.writeText(t);$("vMsg").textContent="Đã copy, dán vào nhóm Zalo."}catch(e){prompt("Copy tin nhắn:",t)}};
 </script></body></html>
