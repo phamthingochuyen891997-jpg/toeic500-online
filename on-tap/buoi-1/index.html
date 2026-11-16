@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ôn tập Buổi 1 · TOEIC Online 500+</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+:root{--pk:#C41F63;--pk2:#E86A97;--bg:#FFF7FA;--ink:#2B1B22;--mut:#6B5560;--ok:#1E8E4A;--no:#B3261E;--fs:1}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif}
+.app{display:grid;grid-template-columns:270px 1fr;height:100vh}
+aside{background:#fff;border-right:1px solid #f1d6e2;display:flex;flex-direction:column;overflow:auto}
+.brand{padding:18px 18px 12px;border-bottom:1px solid #f6e3eb}
+.brand b{font:700 18px Lora,serif;color:var(--pk);display:block}
+.brand small{color:var(--mut);font-size:12px}
+.ag{list-style:none;margin:0;padding:8px}
+.ag li{display:grid;grid-template-columns:52px 1fr;gap:4px 8px;padding:10px 10px;border-radius:12px;cursor:pointer;margin-bottom:2px}
+.ag li:hover{background:#FFF0F5}
+.ag li.on{background:var(--pk);color:#fff}
+.ag li.done:not(.on) .t{color:var(--ok)}
+.ag .t{font:700 13px Inter;color:var(--pk)}
+.ag li.on .t{color:#ffe1ec}
+.ag .n{font-size:13.5px;font-weight:600;line-height:1.3}
+.ag .p{grid-column:2;font-size:11.5px;opacity:.75}
+.side-ft{margin-top:auto;padding:12px 14px;border-top:1px solid #f6e3eb;font-size:12px;color:var(--mut)}
+main{display:flex;flex-direction:column;min-width:0}
+.top{display:flex;align-items:center;gap:10px;padding:12px 22px;border-bottom:1px solid #f1d6e2;background:#fff;flex-wrap:wrap}
+.top .step{font:800 13px Inter;background:var(--pk);color:#fff;border-radius:30px;padding:6px 14px}
+.top .book{font:700 14px Inter;background:#FFF0F5;color:var(--pk);border:2px solid #f3c9da;border-radius:30px;padding:5px 14px}
+.top .sp{flex:1}
+.btn{font:600 13.5px Inter;border:1.5px solid #e9cdd9;background:#fff;color:var(--ink);border-radius:10px;padding:7px 12px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{border-color:var(--pk);color:var(--pk)}
+.btn.pri{background:var(--pk);border-color:var(--pk);color:#fff}
+.btn.pri:hover{background:#a5174f;color:#fff}
+.timer{font:800 20px 'Inter';font-variant-numeric:tabular-nums;min-width:74px;text-align:center;padding:4px 10px;border-radius:10px;background:#FFF0F5;color:var(--pk)}
+.timer.over{background:var(--no);color:#fff}
+.stage{flex:1;overflow:auto;padding:30px 44px 60px;font-size:calc(17px*var(--fs))}
+.slide{display:none;max-width:1100px;margin:0 auto;animation:in .35s ease}
+.slide.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1}}
+h1{font:700 2.3em/1.15 Lora,serif;margin:0 0 .3em}
+h2{font:700 1.75em/1.2 Lora,serif;margin:0 0 .5em}
+h3{font:700 1.15em Inter;margin:1.2em 0 .5em;color:var(--pk)}
+.kick{font:700 .8em Inter;letter-spacing:.12em;text-transform:uppercase;color:var(--pk);margin-bottom:.4em}
+p,li{line-height:1.55}
+.lead{font-size:1.15em;color:#4A3540}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.card{background:#fff;border:1px solid #f1d6e2;border-radius:18px;padding:18px 22px;box-shadow:0 6px 20px rgba(196,31,99,.06)}
+.card h4{margin:0 0 .4em;font-size:1.05em;color:var(--pk)}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 6px 20px rgba(196,31,99,.06)}
+th{background:var(--pk);color:#fff;text-align:left;padding:.7em .9em;font-size:.92em}
+td{padding:.7em .9em;border-bottom:1px solid #f6e3eb;vertical-align:top}
+tr.L td:first-child,tr.R td:first-child{font-weight:800}
+tr.R td{background:#FFF9F2}
+.big-n{font:800 1.4em Inter;color:var(--pk)}
+.pill{display:inline-block;border-radius:30px;padding:.2em .8em;font-weight:700;font-size:.85em;background:#FFF0F5;color:var(--pk);border:1.5px solid #f3c9da;margin:.15em .2em .15em 0}
+.rules{counter-reset:r;list-style:none;padding:0}
+.rules li{counter-increment:r;position:relative;padding:.7em 1em .7em 3.2em;background:#fff;border:1px solid #f1d6e2;border-radius:14px;margin-bottom:.6em;font-weight:500}
+.rules li::before{content:counter(r);position:absolute;left:.8em;top:.6em;width:1.7em;height:1.7em;border-radius:50%;background:var(--pk);color:#fff;font-weight:800;text-align:center;line-height:1.7em}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin:1.2em 0}
+.cta .btn{font-size:1em;padding:.8em 1.2em;border-radius:14px}
+.note{background:#FFFBEA;border:1px solid #f1e2a5;border-radius:14px;padding:.8em 1.1em;margin:1em 0}
+.ex{background:#fff;border:1px solid #f1d6e2;border-radius:16px;padding:1em 1.2em;margin:.7em 0}
+.ex .s{font-size:1.15em;font-weight:500}
+.blank{display:inline-block;min-width:6em;border-bottom:3px solid var(--pk);text-align:center;color:var(--pk);font-weight:800}
+mark{background:#FFE36E;border-radius:4px;padding:0 .15em}
+.rv{margin-top:.6em}
+.hide{display:none}
+.q{background:#fff;border:1px solid #f1d6e2;border-radius:18px;padding:1em 1.3em;margin:0 0 1em}
+.q .qs{font-size:1.12em;font-weight:500;margin:0 0 .7em}
+.q .qs b{color:var(--pk);margin-right:.3em}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:.5em}
+.opt{display:flex;gap:.6em;align-items:center;border:2px solid #eedbe3;border-radius:12px;padding:.55em .8em;background:#fff;cursor:pointer;font:500 1em Inter;text-align:left;color:var(--ink)}
+.opt i{font-style:normal;font-weight:800;width:1.8em;height:1.8em;border-radius:50%;border:2px solid var(--ink);display:inline-flex;align-items:center;justify-content:center;flex:none;font-size:.85em}
+.opt.ok{background:#E6F6EC;border-color:var(--ok)}
+.opt.ok i{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{background:#FDECEC;border-color:var(--no);text-decoration:line-through}
+.why{margin-top:.7em;padding:.7em 1em;border-radius:12px;background:#F1FAF4;border:1px solid #cfe9d8;display:none}
+.q.done .why{display:block}
+.voc{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.vc{background:#fff;border:1px solid #f1d6e2;border-radius:18px;padding:1em;cursor:pointer;min-height:9em;display:flex;flex-direction:column;gap:.35em;position:relative}
+.vc .w{font:800 1.3em Inter;color:var(--pk)}
+.vc .ty{font-size:.85em;color:var(--mut)}
+.vc .m{font-weight:600}
+.vc .e{font-size:.9em;color:#4A3540}
+.vc.cov .m,.vc.cov .e{filter:blur(7px)}
+.say{position:absolute;right:.6em;top:.6em;border:0;background:#FFF0F5;border-radius:50%;width:2.2em;height:2.2em;cursor:pointer;font-size:1em}
+.hw{display:grid;gap:14px}
+.hw .card{display:flex;gap:16px;align-items:center}
+.hw .pg{font:800 1.1em Inter;background:var(--pk);color:#fff;border-radius:14px;padding:.6em .9em;text-align:center;min-width:5.5em}
+.rp{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.rp .btn{padding:6px 10px;font-size:.88em}
+.p1bar{display:flex;gap:10px;align-items:center;margin:.5em 0 1em;flex-wrap:wrap}
+.p1dots{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}.p1dots button{width:2.3em;height:2.3em;border-radius:50%;border:2px solid #eedbe3;background:#fff;font-weight:700;cursor:pointer}.p1dots button.on{border-color:var(--pk);color:var(--pk)}.p1dots button.ok{background:#E6F6EC;border-color:var(--ok)}.p1dots button.no{background:#FDECEC;border-color:var(--no)}
+.qn{margin-top:.6em}.qn textarea{width:100%;min-height:2.6em;border:1.5px dashed #E9C46A;background:#FFFDF3;border-radius:10px;padding:6px 10px;font:500 .92em/1.45 Inter;resize:vertical}
+.gvnote{margin-top:2em;background:#FFFBEA;border:2px dashed #E9C46A;border-radius:16px;padding:12px 16px}
+.gvnote label{display:flex;justify-content:space-between;font-weight:700;color:#8a6d1a;font-size:.9em;margin-bottom:6px}
+.gvnote textarea{width:100%;min-height:7em;border:1px solid #ecdca6;border-radius:10px;padding:10px 12px;font:500 1em/1.5 Inter;background:#fff;resize:vertical}
+.nav{display:flex;justify-content:space-between;margin-top:2em}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;border-radius:12px;font-weight:600;display:none;z-index:9}
+.cover{text-align:center;padding-top:3vh}
+.cover h1{font-size:3em}
+.cover .agenda{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:2em;text-align:left}
+.cover .agenda div{background:#fff;border:1px solid #f1d6e2;border-radius:14px;padding:.8em;cursor:pointer}
+.cover .agenda b{color:var(--pk);display:block}
+body.full .app{grid-template-columns:0 1fr}
+body.full aside{display:none}
+@media(max-width:900px){.app{grid-template-columns:1fr}aside{display:none}.grid2,.opts{grid-template-columns:1fr}.voc,.cover .agenda{grid-template-columns:1fr 1fr}.stage{padding:20px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside>
+  <div class="brand"><b>Ôn tập Buổi 1 · TOEIC 500+</b><small>Bản học viên · Ms. Ngọc Huyền</small></div>
+  <ol class="ag" id="ag"></ol>
+  <div class="side-ft">← → chuyển phần · Ghi chú và câu trả lời được lưu trên máy của em</div>
+</aside>
+<main>
+  <div class="top">
+    <span class="step" id="stepLbl"></span>
+    <span class="book" id="bookLbl"></span>
+    <span class="sp"></span>
+    <span class="timer" id="timer" style="display:none">0:00</span>
+    <button class="btn" id="tBtn" style="display:none">⏱</button>
+    <button class="btn" id="fDown">A−</button><button class="btn" id="fUp">A+</button>
+    <button class="btn" id="fullBtn">⛶ Toàn màn hình</button>
+    <button class="btn" id="prev">◀</button><button class="btn pri" id="next">Tiếp ▶</button>
+  </div>
+  <div class="stage" id="stage">
+
+<!-- 0 COVER -->
+<section class="slide cover" data-t="19:55" data-n="Mở đầu" data-p="Bìa sách" data-m="5">
+  <div class="kick">TOEIC Online 500+ · Khai giảng</div>
+  <h1>Buổi 1</h1>
+  <p class="lead">7 Part TOEIC · Part 1 Mô tả tranh · Chữa test đầu vào · Chuyên đề 1: Thì của động từ</p>
+  <p><span class="pill">📖 Sách học viên tr. 2 · 8 · 14 · 9 · 10–12</span><span class="pill">🎥 Meet mở từ 19:45</span></p>
+  <div class="agenda" id="coverAg"></div>
+</section>
+
+<!-- 1 WELCOME -->
+<section class="slide" data-t="20:00" data-n="Chào lớp · cách dùng sách" data-p="tr. 2" data-m="8">
+  <div class="kick"></div>
+  <h2>Chào mừng các em đến với lớp TOEIC 500+ 👋</h2>
+  <div class="grid2">
+    <div>
+      <h3>3 quy định của lớp</h3>
+      <ol class="rules">
+        <li>Làm bài tập <b>trước</b> buổi học kế tiếp</li>
+        <li>Làm xong bài nào → bấm <b>✓</b> trên trang lộ trình</li>
+        <li>Có câu hỏi → nhắn <b>nhóm Zalo</b>, cô trả lời</li>
+      </ol>
+    </div>
+    <div>
+      <h3>Cách dùng sách (tr. 2)</h3>
+      <div class="card"><h4>📘 Trang trái · Bài học</h4>Mục tiêu, kiến thức trọng tâm, mẹo thi. Cô dạy theo trang này.</div>
+      <div class="card" style="margin-top:10px"><h4>📗 Trang phải · Luyện tập</h4>Bài trên lớp, bài tập về nhà có <b>mã QR</b>, từ vựng, chỗ ghi chú.</div>
+      <div class="card" style="margin-top:10px"><h4>📄 Bài tập in</h4>Làm trên giấy, hoặc quét QR làm trên máy (tự chấm điểm).</div>
+    </div>
+  </div>
+  <div class="cta">
+    <a class="btn pri" target="_blank" rel="noopener" href="https://phamthingochuyen891997-jpg.github.io/toeic500-online/">💻 Mở trang lộ trình</a>
+    <a class="btn" target="_blank" rel="noopener" href="https://phamthingochuyen891997-jpg.github.io/toeic500-online/video/buoi0.mp4">🎬 Video Buổi 0 (97 giây)</a>
+  </div>
+</section>
+
+<!-- 2 SEVEN PARTS -->
+<section class="slide" data-t="20:08" data-n="Bảng 7 Part TOEIC" data-p="tr. 8" data-m="7">
+  <div class="kick">Sách tr. 8</div>
+  <h2>Cấu trúc đề TOEIC Listening & Reading</h2>
+  <p class="lead"><b>200 câu · 120 phút · tối đa 990 điểm</b> (Nghe 495 + Đọc 495)</p>
+  <table>
+    <tr><th>Phần</th><th>Part</th><th>Nội dung</th><th>Số câu</th><th>Thời gian</th></tr>
+    <tr class="L"><td rowspan="4">🎧 Listening</td><td class="big-n">1</td><td>Mô tả tranh</td><td>6</td><td rowspan="4">≈ 45 phút</td></tr>
+    <tr class="L"><td class="big-n">2</td><td>Hỏi – đáp</td><td>25</td></tr>
+    <tr class="L"><td class="big-n">3</td><td>Hội thoại</td><td>39</td></tr>
+    <tr class="L"><td class="big-n">4</td><td>Bài nói ngắn</td><td>30</td></tr>
+    <tr class="R"><td rowspan="3">📖 Reading</td><td class="big-n">5</td><td>Hoàn thành câu</td><td>30</td><td rowspan="3">75 phút</td></tr>
+    <tr class="R"><td class="big-n">6</td><td>Hoàn thành đoạn văn</td><td>16</td></tr>
+    <tr class="R"><td class="big-n">7</td><td>Đọc hiểu</td><td>54</td></tr>
+  </table>
+  <h3>⚡ Đố nhanh 7 Part · 5 câu</h3>
+  <div id="quiz7"></div>
+  <div class="note">🎯 <b>Chiến lược 500+:</b> ăn chắc <b>Part 1, 2, 5</b> (dễ lấy điểm nhất) → rồi mới nâng Part 3, 4, 6, 7. Lộ trình 32 buổi đi đúng thứ tự này.</div>
+</section>
+
+<!-- PART 1 -->
+<section class="slide" data-t="20:15" data-n="Part 1 · Mô tả tranh (15 tranh)" data-p="tr. 14" data-m="15">
+  <div class="kick">Sách tr. 14 (học trước phần Part 1 của Buổi 2)</div>
+  <h2>Part 1 · Mô tả tranh 📷</h2>
+  <div class="grid2">
+    <div>
+      <h3>3 dạng tranh</h3>
+      <div class="card"><h4>👤 Tranh 1 người</h4>Nghe <b>động từ hành động</b>: is holding, is typing, is reaching for</div>
+      <div class="card" style="margin-top:10px"><h4>👥 Tranh nhiều người</h4>Hành động chung (<b>are sitting</b>) hoặc của từng người</div>
+      <div class="card" style="margin-top:10px"><h4>🪑 Tranh vật / cảnh</h4>Bị động hoặc vị trí: <b>have been stacked, is placed, are lined up</b></div>
+    </div>
+    <div>
+      <h3>🎬 Mẹo 60 giây · Part 1</h3>
+      <video controls preload="metadata" playsinline style="width:100%;max-height:440px;border-radius:16px;background:#000" src="assets/meo-part1.mp4"></video>
+    </div>
+  </div>
+  <h3>Cấu trúc hay gặp</h3>
+  <table>
+    <tr><th>Cấu trúc</th><th>Dùng khi</th><th>Ví dụ</th></tr>
+    <tr><td><b>is/are + V-ing</b></td><td>người đang làm</td><td>A woman is watering plants.</td></tr>
+    <tr><td><b>has/have been + V3</b></td><td>vật đã ở trạng thái</td><td>Chairs have been arranged in rows.</td></tr>
+    <tr><td><b>is/are + V3</b></td><td>vật đang ở vị trí</td><td>Boxes are stacked on a cart.</td></tr>
+    <tr><td><b>is/are being + V3</b></td><td>vật đang được làm (<b>phải có người</b>)</td><td>A car is being washed.</td></tr>
+  </table>
+  <h3>3 bẫy Part 1</h3>
+  <ol class="rules">
+    <li><b>Từ phát âm giống:</b> copy / coffee, walk / work, file / pile</li>
+    <li><b>Đúng danh từ nhưng sai động từ:</b> tranh có ladder nhưng không ai climbing</li>
+    <li><b>“is being + V3”</b> khi trong tranh không có người</li>
+  </ol>
+  <div class="note">⏱ <b>Mẹo thi:</b> 5 giây trước khi audio phát, tự hỏi: <b>Ai? Đang làm gì? Ở đâu? Vật gì nổi bật?</b></div>
+  <h3>🎧 Luyện nghe Part 1 · 15 tranh</h3>
+  <p style="color:var(--mut);font-size:.92em">Cách luyện: nhìn tranh 5 giây (Ai? Làm gì? Ở đâu?) → bấm ▶ nghe → chọn đáp án → bấm “Hiện 4 câu” để đọc lại → dùng nút 🔁 A/B/C/D nghe lại từng câu. Câu 1–3: bài kiểm tra trình độ; câu 4–15: Hackers 2 Test 5 & 6.</p>
+  <div class="p1bar"><button class="btn" id="p1Prev">◀ Câu trước</button><span id="p1Count" class="pill"></span><button class="btn pri" id="p1Next">Câu tiếp ▶</button><span id="p1Score" style="margin-left:auto;font-weight:700;color:var(--pk)"></span></div>
+  <div id="p1"></div>
+  <div class="p1dots" id="p1dots"></div>
+</section>
+
+<!-- 3 PLACEMENT -->
+<section class="slide" data-t="20:30" data-n="Chữa test đầu vào (Part 5–7)" data-p="tr. 9 · QR" data-m="12">
+  <div class="kick">Sách tr. 9 (mã QR “Kiểm tra trình độ”)</div>
+  <h2>Chữa bài Kiểm tra trình độ (20 câu)</h2>
+  <div class="grid2">
+    <div class="card"><h4>Cấu trúc bài</h4>
+      <span class="pill">Part 1 · câu 1–3</span><span class="pill">Part 5 · câu 4–12</span><span class="pill">Part 6 · câu 13–16</span><span class="pill">Part 7 · câu 17–20</span>
+    </div>
+    <div class="card"><h4>Cách em tự ôn</h4>
+      Mở bài → làm lại từng câu → đọc phần <b>Giải thích</b>, <b>Dịch câu</b>, <b>Nghĩa các đáp án</b>. Lọc <b>Câu sai</b> để xem lại câu mình sai; đánh dấu <b>★</b> câu cần hỏi cô.
+    </div>
+  </div>
+  <div class="cta">
+    <a class="btn pri" target="_blank" rel="noopener" href="https://claude.ai/artifact/Lva4rGKSBNnbnLbsTkSVZP">📝 Mở bài chữa Kiểm tra trình độ (có giải thích)</a>
+  </div>
+  <div class="note">💡 Bài học rút ra: nhiều câu Part 5 hỏi về <b>thì</b> → muốn chọn đúng, phải nhìn <b>dấu hiệu thời gian</b> (Phần 5).</div>
+</section>
+
+<!-- 4 TENSES -->
+<section class="slide" data-t="20:42" data-n="CĐ1 · 6 thì & dấu hiệu" data-p="tr. 8" data-m="13">
+  <div class="kick">Sách tr. 8</div>
+  <h2>Chuyên đề 1 · 6 thì hay thi và dấu hiệu</h2>
+  <table>
+    <tr><th>Thì</th><th>Công thức</th><th>Dấu hiệu nhận biết</th></tr>
+    <tr><td><b>Hiện tại đơn</b></td><td>V / V-s,es</td><td>every, usually, always, often</td></tr>
+    <tr><td><b>Hiện tại tiếp diễn</b></td><td>am/is/are + V-ing</td><td>now, currently, at the moment</td></tr>
+    <tr><td><b>Hiện tại hoàn thành</b></td><td>have/has + V3</td><td>since, for, already, recently, so far</td></tr>
+    <tr><td><b>Quá khứ đơn</b></td><td>V2 / V-ed</td><td>yesterday, ago, last …, in 2025</td></tr>
+    <tr><td><b>Tương lai đơn</b></td><td>will + V</td><td>tomorrow, next …, soon</td></tr>
+    <tr><td><b>Tương lai hoàn thành</b></td><td>will have + V3</td><td>by + mốc tương lai</td></tr>
+  </table>
+  <h3>Ví dụ · bấm để hiện đáp án</h3>
+  <div class="ex" data-rv><div class="s">Ms. Lee <span class="blank"><span class="hide">has worked</span>&nbsp;</span> at the company <mark>since 2019</mark>.</div><div class="rv hide">→ <b>has worked</b> · “since + mốc” → hiện tại hoàn thành</div><div class="qnx" data-k="ex1"></div></div>
+  <div class="ex" data-rv><div class="s">The new branch <span class="blank"><span class="hide">will open</span>&nbsp;</span> <mark>next month</mark>.</div><div class="rv hide">→ <b>will open</b> · “next month” → tương lai đơn</div><div class="qnx" data-k="ex2"></div></div>
+  <h3>✍️ Luyện thêm 10 câu Part 5 về thì (ETS)</h3>
+  <p style="color:var(--mut);font-size:.92em">Gạch chân dấu hiệu (tô vàng) → chọn thì → kiểm tra chủ ngữ số ít/số nhiều.</p>
+  <div id="tense"></div>
+  <div class="note">💡 <b>Mẹo:</b> gặp câu hỏi về thì → gạch chân <b>trạng từ chỉ thời gian TRƯỚC</b> khi nhìn đáp án.</div>
+</section>
+
+<!-- 5 NP650 -->
+<section class="slide" data-t="20:55" data-n="Luyện Ngữ pháp 650 · CĐ1" data-p="tr. 9 · QR" data-m="12">
+  <div class="kick">Sách tr. 9 (mã QR “Ngữ pháp 650 · CĐ1”)</div>
+  <h2>Luyện tập: Ngữ pháp 650 · Chuyên đề 1</h2>
+  <p class="lead">Em làm lại bài trên máy. Mỗi câu: <b>tìm dấu hiệu → chọn thì → kiểm tra chủ ngữ số ít/số nhiều</b>.</p>
+  <div class="cta">
+    <a class="btn pri" target="_blank" rel="noopener" href="https://claude.ai/artifact/JSXejEfmFniEhEmAh5sT1F#v1">📘 Mở Ngữ pháp 650 · CĐ1</a>
+  </div>
+  <div class="note">✅ Làm xong nhớ bấm ✓ trên trang lộ trình.</div>
+</section>
+
+<!-- 6 MINI 1-5 -->
+<section class="slide" data-t="21:07" data-n="Mini test CĐ1 · câu 1–5" data-p="tr. 10" data-m="8">
+  <div class="kick">Sách tr. 10 · Mini test CĐ1, câu 1–5</div>
+  <h2>Mini test CĐ1 · câu 1–5 (đã chữa trên lớp)</h2><p style="color:var(--mut)">Bấm đáp án để xem giải thích chi tiết. Câu 6–15 là bài về nhà (sách tr. 10).</p>
+  <div id="mini"></div>
+</section>
+
+<!-- 7 VOCAB -->
+<section class="slide" data-t="21:15" data-n="8 từ vựng của buổi" data-p="tr. 9" data-m="5">
+  <div class="kick">Sách tr. 9 · bảng “Từ vựng buổi 1”</div>
+  <h2>Từ vựng buổi 1 · Danh từ chỉ người</h2>
+  <p><button class="btn" id="vCover">🙈 Che nghĩa (đố lớp)</button> <span style="color:var(--mut);font-size:.9em">Bấm thẻ để hiện/che nghĩa · 🔊 để nghe</span></p>
+  <div class="voc" id="voc"></div>
+  <h3>🧠 Kiểm tra nhanh · chọn nghĩa đúng (8 câu)</h3>
+  <div id="vq"></div>
+</section>
+
+<!-- 8 HOMEWORK -->
+<section class="slide" data-t="21:20" data-n="Giao bài về nhà" data-p="tr. 10–12" data-m="5">
+  <div class="kick">Làm trước Buổi 2 (Thứ Tư 18/11)</div>
+  <h2>Bài tập về nhà</h2>
+  <div class="hw">
+    <div class="card"><div class="pg">tr. 10</div><div style="flex:1"><h4>Mini test CĐ1 · Cơ bản</h4>Làm hết các câu còn lại (từ câu 6). Làm trên giấy hoặc quét QR.</div><a class="btn" target="_blank" rel="noopener" href="https://claude.ai/artifact/S3E8WXDgGLh2jQYVMTaYw8#mini-1">Mở bài ↗</a></div>
+    <div class="card"><div class="pg">tr. 11–12</div><div style="flex:1"><h4>Từ vựng · Danh từ chỉ người</h4>Học bảng từ, rồi làm bài luyện chọn câu trả lời phù hợp.</div><a class="btn" target="_blank" rel="noopener" href="https://claude.ai/artifact/MDmRVh5ncDTCSTBJ67m1q2#p2-u1">Mở bài ↗</a></div>
+    <div class="card"><div class="pg">✓</div><div style="flex:1"><h4>Bấm ✓ trên trang lộ trình</h4>Làm xong bài nào bấm ✓ để giữ chuỗi ngày học 🔥</div><a class="btn" target="_blank" rel="noopener" href="https://phamthingochuyen891997-jpg.github.io/toeic500-online/">Trang lộ trình ↗</a></div>
+  </div>
+  <div class="note" style="text-align:center;font-size:1.1em">Hẹn gặp các em <b>20:00 Thứ Tư 18/11</b> · Buổi 2: Part 1 tranh tả người, vật · Part 5 dấu hiệu thì 💪</div>
+</section>
+
+  </div>
+</main>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+const MINI=[
+ {q:"Parts of the air show will be extremely loud, so organizers ______ bringing hearing protection.",o:["to advise","advice","advise","advising"],a:2,w:"Sau chủ ngữ <b>organizers</b> cần <b>động từ chính</b> chia hiện tại đơn (số nhiều) → <b>advise</b>. advise + V-ing = khuyên làm gì. advice là danh từ."},
+ {q:"<mark>Last Monday</mark>, the department ______ Mr. Okada's recent promotion to manager.",o:["will be celebrating","celebrated","is celebrating","celebrates"],a:1,w:"<b>Last Monday</b> → quá khứ đơn → <b>celebrated</b>."},
+ {q:"The shuttle ______ <mark>at 8 A.M.</mark>, so please pack your baggage promptly <mark>in the morning</mark>.",o:["leaving","have left","will be leaving","having left"],a:2,w:"Việc sẽ xảy ra sáng mai (please pack… in the morning) → tương lai → <b>will be leaving</b>. leaving/having left không làm động từ chính; have left sai chủ ngữ số ít."},
+ {q:"The cash registers at Pirkle Books <mark>automatically</mark> ______ the remaining inventory of books available.",o:["calculate","calculator","calculating","calculation"],a:0,w:"Chủ ngữ số nhiều <b>cash registers</b> + trạng từ automatically → cần <b>động từ chính</b>: <b>calculate</b> (hiện tại đơn, sự việc thường xuyên)."},
+ {q:"Mount Teide is Spain's only peak that ______ above 3,500 meters.",o:["rise","rises","to rise","rising"],a:1,w:"Sự thật hiển nhiên → hiện tại đơn. “that” thay cho <b>peak</b> (số ít) → <b>rises</b>."}];
+const P1NEW=[{"img": "assets/hk5-1.jpg", "aud": "assets/hk5-1.mp3", "o": ["A woman is putting on a hat.", "A woman is relaxing beneath some trees.", "A woman is jogging along a trail.", "A woman is skiing on the snow."], "a": 2, "why": "Người phụ nữ đang chạy bộ dọc theo lối đi phủ tuyết trong công viên — khớp đúng với \"jogging along a trail\".", "wrong": {"A": "Cô ấy đã đội mũ sẵn, không có hành động đang đội mũ lên (putting on a hat).", "B": "Cô ấy đang di chuyển/chạy, không phải đang nghỉ ngơi dưới tán cây (relaxing beneath some trees).", "D": "Cô ấy đang chạy bộ bằng giày thể thao, không phải đang trượt tuyết (skiing on the snow)."}, "voc": [{"en": "jog", "pos": "v", "vi": "chạy bộ"}, {"en": "trail", "pos": "n", "vi": "lối mòn, đường mòn"}, {"en": "put on", "pos": "v", "vi": "đội/mặc vào"}, {"en": "relax", "pos": "v", "vi": "nghỉ ngơi, thư giãn"}, {"en": "beneath", "pos": "prep", "vi": "bên dưới"}, {"en": "ski", "pos": "v", "vi": "trượt tuyết"}], "src": "Hackers 2 · Test 5 · câu 1"}, {"img": "assets/hk5-2.jpg", "aud": "assets/hk5-2.mp3", "o": ["The women are sipping their drinks.", "The women are posing for a picture.", "One of the women is setting up camera equipment.", "One of the women is unwrapping a gift."], "a": 1, "why": "Bốn người phụ nữ đang tạo dáng, cười tươi hướng về phía máy ảnh — khớp đúng với \"posing for a picture\".", "wrong": {"A": "Họ đang cầm ly nước để chụp ảnh, không có hành động đang nhấp/uống (sipping) đồ uống.", "C": "Người đàn ông phía trước mới là người đang cầm máy ảnh, không phải một trong những người phụ nữ (one of the women).", "D": "Chiếc hộp quà trên bàn vẫn còn nguyên, không có ai đang mở nó ra (unwrapping a gift)."}, "voc": [{"en": "pose for a picture", "pos": "v", "vi": "tạo dáng chụp ảnh"}, {"en": "sip", "pos": "v", "vi": "nhấp, uống từng ngụm nhỏ"}, {"en": "set up", "pos": "v", "vi": "lắp đặt, chuẩn bị"}, {"en": "camera equipment", "pos": "n", "vi": "thiết bị máy ảnh"}, {"en": "unwrap", "pos": "v", "vi": "mở (gói quà)"}, {"en": "gift", "pos": "n", "vi": "quà tặng"}], "src": "Hackers 2 · Test 5 · câu 2"}, {"img": "assets/hk5-3.jpg", "aud": "assets/hk5-3.mp3", "o": ["Some people are exiting a greenhouse.", "Bouquets are being sold at an outdoor market.", "A customer is talking with a florist.", "Women are browsing plants."], "a": 3, "why": "Những người phụ nữ đang xem/lựa chọn các chậu cây bên trong nhà kính — khớp đúng với \"women are browsing plants\".", "wrong": {"A": "Họ vẫn đang ở bên trong nhà kính xem cây, không có ai đang đi ra ngoài (exiting a greenhouse).", "B": "Đây là bên trong một nhà kính trồng cây, không phải một khu chợ ngoài trời bán hoa bó (outdoor market selling bouquets).", "C": "Không thấy ai đang trò chuyện với người bán hoa (talking with a florist) — cả hai đang tự xem cây một mình."}, "voc": [{"en": "browse", "pos": "v", "vi": "xem qua, ngắm nghía"}, {"en": "greenhouse", "pos": "n", "vi": "nhà kính"}, {"en": "bouquet", "pos": "n", "vi": "bó hoa"}, {"en": "florist", "pos": "n", "vi": "người bán hoa"}, {"en": "exit", "pos": "v", "vi": "rời khỏi, đi ra"}, {"en": "outdoor market", "pos": "n", "vi": "chợ ngoài trời"}], "src": "Hackers 2 · Test 5 · câu 3"}, {"img": "assets/hk5-4.jpg", "aud": "assets/hk5-4.mp3", "o": ["An apron is hanging from a hook.", "Shelves have been stocked with merchandise.", "The man is buying items at a cash register.", "The man is removing jars from a basket."], "a": 1, "why": "Các kệ hàng trong cửa hàng đã được chất đầy hàng hóa — khớp đúng với \"shelves have been stocked with merchandise\".", "wrong": {"A": "Người đàn ông đang mặc tạp dề trên người, không có chiếc tạp dề nào được treo trên móc (hanging from a hook).", "C": "Không thấy quầy thu ngân nào trong ảnh để nói ông ấy đang thanh toán mua hàng (buying items at a cash register) — ông ấy là người bán hàng.", "D": "Ông ấy đang đặt/xếp các món đồ vào giỏ, không phải đang lấy các lọ ra khỏi giỏ (removing jars from a basket)."}, "voc": [{"en": "stock", "pos": "v", "vi": "chất hàng, dự trữ hàng"}, {"en": "merchandise", "pos": "n", "vi": "hàng hóa"}, {"en": "apron", "pos": "n", "vi": "tạp dề"}, {"en": "hook", "pos": "n", "vi": "cái móc"}, {"en": "cash register", "pos": "n", "vi": "máy tính tiền, quầy thu ngân"}, {"en": "jar", "pos": "n", "vi": "cái lọ, hũ"}], "src": "Hackers 2 · Test 5 · câu 4"}, {"img": "assets/hk5-5.jpg", "aud": "assets/hk5-5.mp3", "o": ["Vehicles are on display at a dealership.", "A multi-level structure surrounds a parking lot.", "Windows overlook a garden area.", "Water is spraying from a fountain."], "a": 1, "why": "Một tòa nhà nhiều tầng bao quanh bốn phía của bãi đỗ xe — khớp đúng với \"a multi-level structure surrounds a parking lot\".", "wrong": {"A": "Những chiếc xe chỉ đang đậu trong bãi đỗ, không phải được trưng bày tại một đại lý xe (on display at a dealership).", "C": "Các ô cửa sổ nhìn xuống bãi đỗ xe, không phải hướng ra một khu vườn (garden area).", "D": "Đài phun nước ở giữa sân không có nước đang phun (spraying) — chỉ là một cấu trúc tĩnh."}, "voc": [{"en": "multi-level", "pos": "adj", "vi": "nhiều tầng"}, {"en": "structure", "pos": "n", "vi": "công trình, kết cấu"}, {"en": "surround", "pos": "v", "vi": "bao quanh"}, {"en": "dealership", "pos": "n", "vi": "đại lý (xe)"}, {"en": "overlook", "pos": "v", "vi": "nhìn xuống, hướng ra"}, {"en": "fountain", "pos": "n", "vi": "đài phun nước"}], "src": "Hackers 2 · Test 5 · câu 5"}, {"img": "assets/hk5-6.jpg", "aud": "assets/hk5-6.mp3", "o": ["Some people are sitting on stones.", "One of the people is walking up a hill.", "An airplane is taking off from a runway.", "Some pedestrians are photographing the jets."], "a": 0, "why": "Một nhóm người đang ngồi trên các khối đá của tường thành cổ để ngắm máy bay — khớp đúng với \"sitting on stones\".", "wrong": {"B": "Không ai đang đi bộ lên đồi (walking up a hill) — mọi người đang đứng/ngồi yên trên tường đá để xem.", "C": "Những chiếc máy bay đang bay trên trời, không phải đang cất cánh từ đường băng (taking off from a runway) — không có đường băng nào trong ảnh.", "D": "Không thấy ai đang giơ máy ảnh lên chụp máy bay (photographing the jets) — mọi người chỉ đang ngước nhìn."}, "voc": [{"en": "sit on stones", "pos": "v", "vi": "ngồi trên đá"}, {"en": "walk up a hill", "pos": "v", "vi": "đi bộ lên đồi"}, {"en": "take off", "pos": "v", "vi": "cất cánh"}, {"en": "runway", "pos": "n", "vi": "đường băng"}, {"en": "pedestrian", "pos": "n", "vi": "người đi bộ"}, {"en": "jet", "pos": "n", "vi": "máy bay phản lực"}], "src": "Hackers 2 · Test 5 · câu 6"}, {"img": "assets/hk6-1.jpg", "aud": "assets/hk6-1.mp3", "o": ["The woman is folding a document.", "The woman is operating a machine.", "The woman is installing equipment.", "The woman is reading a newspaper."], "a": 1, "why": "Người phụ nữ đang đứng thao tác với máy photocopy — khớp đúng với \"operating a machine\".", "wrong": {"A": "Cô ấy đang cầm tờ giấy để đặt vào máy photo, không có hành động gấp tài liệu (folding a document).", "C": "Chiếc máy đã có sẵn tại chỗ, không có hành động đang lắp đặt thiết bị (installing equipment).", "D": "Cô ấy đang nhìn xuống máy photocopy, không phải đang đọc báo (reading a newspaper)."}, "voc": [{"en": "operate", "pos": "v", "vi": "vận hành, thao tác"}, {"en": "machine", "pos": "n", "vi": "máy móc"}, {"en": "fold", "pos": "v", "vi": "gấp lại"}, {"en": "install", "pos": "v", "vi": "lắp đặt"}, {"en": "equipment", "pos": "n", "vi": "thiết bị"}, {"en": "document", "pos": "n", "vi": "tài liệu"}], "src": "Hackers 2 · Test 6 · câu 1"}, {"img": "assets/hk6-2.jpg", "aud": "assets/hk6-2.mp3", "o": ["The man is plugging in a cord.", "The man is handling a power tool.", "A hard hat is sitting on a shelf.", "Tiles are being laid on the floor."], "a": 1, "why": "Người đàn ông đang cầm và sử dụng một dụng cụ điện (máy khoan) — khớp đúng với \"handling a power tool\".", "wrong": {"A": "Không có hành động cắm dây điện vào ổ (plugging in a cord) đang diễn ra trong ảnh.", "C": "Anh ấy đang đội mũ bảo hộ trên đầu, không có chiếc mũ nào được đặt trên kệ (sitting on a shelf).", "D": "Anh ấy đang khoan tường, không có hành động lát gạch trên sàn (tiles being laid on the floor)."}, "voc": [{"en": "handle", "pos": "v", "vi": "cầm, thao tác với"}, {"en": "power tool", "pos": "n", "vi": "dụng cụ điện cầm tay"}, {"en": "plug in", "pos": "v", "vi": "cắm điện"}, {"en": "cord", "pos": "n", "vi": "dây điện"}, {"en": "hard hat", "pos": "n", "vi": "mũ bảo hộ"}, {"en": "tile", "pos": "n", "vi": "viên gạch lát"}], "src": "Hackers 2 · Test 6 · câu 2"}, {"img": "assets/hk6-3.jpg", "aud": "assets/hk6-3.mp3", "o": ["A customer has approached a check-in counter.", "A customer is unpacking a suitcase.", "Ticketing agents are stationed across from each other.", "Ticketing agents are inspecting some baggage."], "a": 0, "why": "Một nữ hành khách đang tiến đến quầy làm thủ tục check-in — khớp đúng với \"approached a check-in counter\".", "wrong": {"B": "Không có hành động mở vali lấy đồ ra (unpacking a suitcase) đang diễn ra.", "C": "Hai nhân viên hàng không đang đứng cạnh nhau sau quầy, không phải đứng đối diện nhau (stationed across from each other).", "D": "Không thấy nhân viên nào đang kiểm tra hành lý (inspecting baggage) trong ảnh."}, "voc": [{"en": "approach", "pos": "v", "vi": "tiến đến gần"}, {"en": "check-in counter", "pos": "n", "vi": "quầy làm thủ tục"}, {"en": "unpack", "pos": "v", "vi": "lấy đồ ra (khỏi vali)"}, {"en": "ticketing agent", "pos": "n", "vi": "nhân viên bán vé/làm thủ tục"}, {"en": "stationed", "pos": "adj", "vi": "được bố trí, đứng trực"}, {"en": "inspect", "pos": "v", "vi": "kiểm tra"}], "src": "Hackers 2 · Test 6 · câu 3"}, {"img": "assets/hk6-4.jpg", "aud": "assets/hk6-4.mp3", "o": ["Curtains are hanging from both walls.", "A stage is prepared for a concert.", "Chairs are arranged in a classroom.", "A microphone is being set up at a podium."], "a": 2, "why": "Các dãy ghế được sắp xếp thành hàng cong trong một phòng học/hội trường — khớp đúng với \"chairs are arranged in a classroom\".", "wrong": {"A": "Rèm cửa chỉ có ở một phía (mặt trước), không phải treo ở cả hai bên tường (both walls).", "B": "Đây là một phòng họp/lớp học, không có dấu hiệu chuẩn bị cho buổi hòa nhạc (prepared for a concert).", "D": "Không thấy ai đang lắp micro tại bục phát biểu (being set up at a podium) — micro đã gắn sẵn trên bàn."}, "voc": [{"en": "arrange", "pos": "v", "vi": "sắp xếp"}, {"en": "curtain", "pos": "n", "vi": "rèm cửa"}, {"en": "stage", "pos": "n", "vi": "sân khấu"}, {"en": "podium", "pos": "n", "vi": "bục phát biểu"}, {"en": "set up", "pos": "v", "vi": "lắp đặt, chuẩn bị"}, {"en": "microphone", "pos": "n", "vi": "micro"}], "src": "Hackers 2 · Test 6 · câu 4"}, {"img": "assets/hk6-5.jpg", "aud": "assets/hk6-5.mp3", "o": ["Some people are spreading out their towels.", "A swimmer is emerging from the pool.", "Some parasols have been opened.", "A sunbed has been positioned on a beach."], "a": 2, "why": "Nhiều chiếc dù/ô che nắng đã được mở ra quanh khu vực hồ bơi — khớp đúng với \"some parasols have been opened\".", "wrong": {"A": "Không thấy ai đang trải khăn tắm ra (spreading out their towels) trong khung cảnh này.", "B": "Không có người bơi nào đang nhô lên khỏi mặt nước (emerging from the pool) được nhìn thấy rõ.", "D": "Cảnh trong ảnh là khu vực hồ bơi của khu nghỉ dưỡng, không phải một chiếc giường tắm nắng đặt trên bãi biển (positioned on a beach)."}, "voc": [{"en": "parasol", "pos": "n", "vi": "dù/ô che nắng"}, {"en": "spread out", "pos": "v", "vi": "trải ra"}, {"en": "emerge", "pos": "v", "vi": "nhô lên, xuất hiện"}, {"en": "sunbed", "pos": "n", "vi": "giường tắm nắng"}, {"en": "towel", "pos": "n", "vi": "khăn tắm"}, {"en": "position", "pos": "v", "vi": "đặt vào vị trí"}], "src": "Hackers 2 · Test 6 · câu 5"}, {"img": "assets/hk6-6.jpg", "aud": "assets/hk6-6.mp3", "o": ["A vendor is pushing a fruit cart in front of a shop.", "Some produce has been put on display.", "A salesperson is assisting a customer at a market.", "Some baskets have been stacked in a truck."], "a": 1, "why": "Rất nhiều loại nông sản/trái cây đã được bày ra trưng bày trong các giỏ trước cửa hàng — khớp đúng với \"produce has been put on display\".", "wrong": {"A": "Không có ai đang đẩy xe hàng trái cây (pushing a fruit cart) — trái cây đã được bày cố định trong các giỏ.", "C": "Không thấy khách hàng nào đang được nhân viên hỗ trợ (assisting a customer) trong ảnh — chỉ có một người đang sắp xếp hàng.", "D": "Những chiếc giỏ đang được bày trên vỉa hè, không phải xếp chồng trong một chiếc xe tải (stacked in a truck)."}, "voc": [{"en": "produce", "pos": "n", "vi": "nông sản, rau củ quả"}, {"en": "put on display", "pos": "v", "vi": "bày ra, trưng bày"}, {"en": "vendor", "pos": "n", "vi": "người bán hàng rong"}, {"en": "cart", "pos": "n", "vi": "xe đẩy hàng"}, {"en": "assist", "pos": "v", "vi": "hỗ trợ, giúp đỡ"}, {"en": "stack", "pos": "v", "vi": "xếp chồng"}], "src": "Hackers 2 · Test 6 · câu 6"}];
+const P1=[
+ {img:"assets/p1-q2.jpg",aud:"assets/p1-q2.mp3",o:["Some people are exiting a parked vehicle.","A woman is walking past a pedestrian crosswalk.","Some cars are crossing an intersection.","A woman is taping a flyer to a light pole."],a:1,w:"Tranh 1 người → nghe động từ: <b>is walking past</b>. A, C, D nhắc tới xe, cột đèn có trong tranh nhưng <b>sai hành động</b> (bẫy 2)."},
+ {img:"assets/p1-q3.jpg",aud:"assets/p1-q3.mp3",o:["A man is standing behind a counter.","A man is setting up a display of items.","Some floor tiles are being repaired.","Customers are lined up at a cash register."],a:0,w:"<b>is standing behind a counter</b> = vị trí người. C: “are being repaired” nhưng không ai đang sửa (bẫy 3). D: không có khách."},
+ {img:"assets/p1-q4.jpg",aud:"assets/p1-q4.mp3",o:["Some desks are pushed up against a window.","A light fixture is hanging from the ceiling.","Some armchairs have been stacked in a corner.","A fence is visible through the window."],a:3,w:"Tranh vật/cảnh, không người → câu tả vị trí: <b>A fence is visible through the window</b>. C: có ghế bành nhưng không xếp chồng (đúng vật, sai trạng thái)."}];
+const TENSE=[
+ {q:"The finance department ______ a lunch-and-learn session <mark>on Thursday</mark>.",o:["is held","to hold","will be holding","has held"],a:2,w:"“on Thursday” (sắp tới) → tương lai → <b>will be holding</b>."},
+ {q:"<mark>Later today</mark>, Mr. Davis ______ interview times for the job applicant finalists.",o:["has been arranging","will be arranging","was arranged","have arranged"],a:1,w:"“Later today” → tương lai → <b>will be arranging</b>."},
+ {q:"<mark>At present</mark>, Marco Bank ______ first-time customers a $100 bonus when they open an account.",o:["offer","offering","is offering","has been offering"],a:2,w:"“At present” = now → hiện tại tiếp diễn → <b>is offering</b> (chủ ngữ số ít)."},
+ {q:"Corracar Ltd. ______ for new ways to expand its transportation network.",o:["looked","to be looking","is looking","had been looked"],a:2,w:"Việc đang diễn ra, chủ ngữ số ít, cần động từ chính → <b>is looking</b>."},
+ {q:"Jasper Associates <mark>currently</mark> ______ contracts with 22 different food suppliers.",o:["is having","has","will have","had"],a:1,w:"“currently” nhưng <b>have</b> (sở hữu) là động từ trạng thái, không dùng V-ing → <b>has</b>."},
+ {q:"<mark>By the end of April</mark>, the personnel manager ______ the employee reviews.",o:["completes","had completely","will be completed","will have completed"],a:3,w:"“By + mốc tương lai” → tương lai hoàn thành → <b>will have completed</b>."},
+ {q:"M&S Home Furnishings ______ customized furniture in Aberdeen <mark>for more than a decade</mark>.",o:["manufactures","is manufacturing","has manufactured","manufacture"],a:2,w:"“for + khoảng thời gian” → hiện tại hoàn thành → <b>has manufactured</b>."},
+ {q:"<mark>In the last three years</mark>, production at the Warner facility ______ in volume.",o:["has doubled","doubling","have doubled","had doubled"],a:0,w:"“In the last three years” → hiện tại hoàn thành; chủ ngữ “production” số ít → <b>has doubled</b>."},
+ {q:"<mark>Since October 1</mark>, Ms. Lawrence ______ our department's travel budget.",o:["plan","planned","has planned","will be planning"],a:2,w:"“Since + mốc” → hiện tại hoàn thành → <b>has planned</b>."},
+ {q:"According to a report, the demand for diesel mechanics ______ by 20 percent <mark>next year</mark>.",o:["increase","has increased","will increase","increases"],a:2,w:"“next year” → tương lai đơn → <b>will increase</b>."}];
+const QUIZ7=[
+ {q:"Part nào có <b>nhiều câu nhất</b> trong đề TOEIC?",o:["Part 2","Part 3","Part 5","Part 7"],a:3,w:"Part 7 có 54 câu."},
+ {q:"Part 1 – Mô tả tranh có bao nhiêu câu?",o:["4","6","10","25"],a:1,w:"Part 1 có 6 câu."},
+ {q:"Phần Reading làm trong bao lâu?",o:["45 phút","60 phút","75 phút","120 phút"],a:2,w:"Reading 75 phút cho 100 câu (Part 5, 6, 7)."},
+ {q:"“Hỏi – đáp” (nghe 1 câu hỏi, chọn câu trả lời) là Part mấy?",o:["Part 1","Part 2","Part 3","Part 4"],a:1,w:"Part 2: 25 câu, chỉ có A/B/C."},
+ {q:"Part nào là “Hoàn thành câu” – dạng ngữ pháp, từ loại, từ vựng?",o:["Part 4","Part 5","Part 6","Part 7"],a:1,w:"Part 5: 30 câu, cách nhanh nhất để lấy điểm Reading."}];
+const VOC=[["applicant","n","ứng viên","Each applicant must submit a résumé."],["employee","n","nhân viên","All employees should attend the meeting."],["employer","n","chủ, nhà tuyển dụng","Our employer offers paid leave."],["supervisor","n","người giám sát","Ask your supervisor for approval."],["colleague","n","đồng nghiệp","She is having lunch with a colleague."],["client","n","khách hàng","The client signed the contract today."],["representative","n","người đại diện","A sales representative will call you."],["participant","n","người tham gia","Participants will receive a certificate."]];
+const L="ABCD",$=s=>document.querySelector(s),S=[...document.querySelectorAll('.slide')];
+let cur=0,tLeft=0,tRun=null,fs=1;
+try{cur=+localStorage.getItem('hv_b1_cur')||0;fs=+localStorage.getItem('hv_b1_fs')||1}catch(e){}
+document.documentElement.style.setProperty('--fs',fs);
+$('#ag').innerHTML=S.map((s,i)=>`<li data-go="${i}"><span class="t">Phần ${i}</span><span class="n">${s.dataset.n}</span><span class="p">📖 ${s.dataset.p}</span></li>`).join('');
+$('#coverAg').innerHTML=S.slice(1).map((s,i)=>`<div data-go="${i+1}"><b>Phần ${i+1}</b>${s.dataset.n}<br><small>📖 ${s.dataset.p}</small></div>`).join('');
+function qnote(k){let v='';try{v=localStorage.getItem('hv_b1_qn_'+k)||''}catch(e){}return `<div class="qn"><textarea data-qn="${k}" placeholder="📝 Ghi chú của em cho câu này…">${v.replace(/</g,'&lt;')}</textarea></div>`}
+function mcq(id,set,arr,start=1){$(id).innerHTML=arr.map((m,i)=>`<div class="q" data-set="${set}" data-i="${i}"><p class="qs"><b>${i+start}.</b>${m.q}</p><div class="opts">${m.o.map((o,k)=>`<button class="opt" data-k="${k}"><i>${L[k]}</i>${o}</button>`).join('')}</div><div class="why">✅ <b>${L[m.a]}. ${m.o[m.a]}</b>${m.w?' — '+m.w:''}${m.tr?`<div style="margin-top:.5em"><b>Dịch câu:</b> ${m.tr}</div>`:''}${m.om?`<div style="margin-top:.5em"><b>Các đáp án:</b><ul style="margin:.2em 0 0;padding-left:1.2em">${m.o.map((o,k)=>`<li><b>${L[k]}. ${o}</b> — ${m.om[k]}${m.x&&m.x[L[k]]?` <span style="color:var(--no)">✗ ${m.x[L[k]]}</span>`:(k===m.a?' <span style="color:var(--ok)">✓ đáp án</span>':'')}</li>`).join('')}</ul></div>`:''}</div>${qnote(set+'_'+i)}</div>`).join('')}
+const P1TR=[["Vài người đang bước ra khỏi một chiếc xe đang đỗ.", "Một người phụ nữ đang đi bộ ngang qua vạch sang đường.", "Vài chiếc xe đang băng qua giao lộ.", "Một người phụ nữ đang dán tờ rơi lên cột đèn."], ["Một người đàn ông đang đứng phía sau quầy.", "Một người đàn ông đang bày một quầy hàng.", "Vài viên gạch lát sàn đang được sửa.", "Khách hàng đang xếp hàng ở quầy tính tiền."], ["Vài cái bàn được kê sát cửa sổ.", "Một chiếc đèn đang treo từ trần nhà.", "Vài chiếc ghế bành đã được xếp chồng trong góc.", "Có thể nhìn thấy một hàng rào qua cửa sổ."], ["Một người phụ nữ đang đội mũ.", "Một người phụ nữ đang thư giãn dưới tán cây.", "Một người phụ nữ đang chạy bộ dọc theo lối mòn.", "Một người phụ nữ đang trượt tuyết."], ["Những người phụ nữ đang nhấp đồ uống.", "Những người phụ nữ đang tạo dáng chụp ảnh.", "Một người phụ nữ đang lắp đặt thiết bị máy ảnh.", "Một người phụ nữ đang mở hộp quà."], ["Vài người đang đi ra khỏi nhà kính.", "Những bó hoa đang được bán ở chợ ngoài trời.", "Một khách hàng đang nói chuyện với người bán hoa.", "Những người phụ nữ đang xem cây."], ["Một chiếc tạp dề đang treo trên móc.", "Kệ đã được chất đầy hàng hoá.", "Người đàn ông đang mua đồ ở quầy tính tiền.", "Người đàn ông đang lấy những cái lọ ra khỏi giỏ."], ["Xe đang được trưng bày ở đại lý.", "Một công trình nhiều tầng bao quanh bãi đỗ xe.", "Cửa sổ nhìn ra một khu vườn.", "Nước đang phun ra từ đài phun nước."], ["Vài người đang ngồi trên những tảng đá.", "Một người đang đi bộ lên đồi.", "Một chiếc máy bay đang cất cánh từ đường băng.", "Vài người đi bộ đang chụp ảnh những chiếc máy bay phản lực."], ["Người phụ nữ đang gấp một tài liệu.", "Người phụ nữ đang vận hành một cái máy.", "Người phụ nữ đang lắp đặt thiết bị.", "Người phụ nữ đang đọc báo."], ["Người đàn ông đang cắm dây điện.", "Người đàn ông đang cầm/sử dụng dụng cụ điện.", "Một chiếc mũ bảo hộ đang đặt trên kệ.", "Gạch đang được lát trên sàn."], ["Một khách hàng đã đến quầy làm thủ tục.", "Một khách hàng đang dỡ đồ khỏi va-li.", "Nhân viên bán vé đang đứng đối diện nhau.", "Nhân viên bán vé đang kiểm tra hành lý."], ["Rèm đang treo trên cả hai bức tường.", "Một sân khấu đã được chuẩn bị cho buổi hoà nhạc.", "Ghế được sắp xếp trong một phòng học.", "Một chiếc micro đang được lắp ở bục phát biểu."], ["Vài người đang trải khăn tắm.", "Một người bơi đang bước lên khỏi hồ.", "Vài chiếc ô che nắng đã được mở ra.", "Một chiếc ghế tắm nắng đã được đặt trên bãi biển."], ["Một người bán hàng đang đẩy xe trái cây trước cửa hàng.", "Nông sản đã được bày ra trưng bày.", "Một nhân viên bán hàng đang giúp khách ở chợ.", "Vài cái giỏ đã được chồng lên trong xe tải."]],P1W=[{"A": "Không có ai đang bước ra khỏi xe; các xe đều đứng yên.", "C": "Xe đang đỗ/dừng, không có xe nào đang băng qua giao lộ.", "D": "Có cột đèn nhưng không ai đang dán tờ rơi (đúng vật, sai hành động)."}, {"B": "Anh ấy đang đứng ở máy tính, không bày hàng.", "C": "“are being repaired” cần có người đang sửa — trong tranh không ai sửa sàn.", "D": "Không có khách hàng nào đang xếp hàng."}, {"A": "Trong phòng không có bàn (desk).", "B": "Không thấy đèn treo trên trần.", "C": "Ghế bành được đặt thành hàng, không bị xếp chồng trong góc."}],P1TIP=["Tranh 1 người → nghe ĐỘNG TỪ.", "Tranh 1 người → nghe vị trí + động từ.", "Tranh không người → câu tả vị trí/trạng thái của vật.", "Tranh 1 người → nghe động từ (jogging).", "Tranh nhiều người → hành động chung của cả nhóm.", "Tranh nhiều người → hành động chung.", "Có người nhưng đáp án tả vật → “have been + V3” (trạng thái).", "Tranh cảnh → câu tả vị trí công trình.", "Tranh nhiều người → hành động của một nhóm.", "Tranh 1 người → nghe động từ (operating).", "Tranh 1 người → động từ handling (cầm, thao tác).", "Tranh nhiều người → hành động của 1 người cụ thể.", "Tranh không người → bị động hiện tại “are arranged”.", "Tranh cảnh → “have been opened” (trạng thái).", "Tranh cảnh/ít người → “has been put on display”."];
+const P1ALL=P1.map((m,i)=>({...m,src:'Kiểm tra trình độ · câu '+(i+1),wrong:P1W[i],voc:[]})).concat(P1NEW).map((m,i)=>({...m,tr:P1TR[i],tip:P1TIP[i]}));
+let p1i=0;const p1ans={};let p1slow=false,p1stop=null;const SEG={"p1-q2": [[6.01, 10.13], [10.56, 15.02], [15.48, 19.4], [19.85, 23.95]], "p1-q3": [[6.23, 9.54], [9.98, 13.81], [14.18, 17.54], [17.98, 21.65]], "p1-q4": [[5.93, 10.09], [10.52, 14.48], [14.93, 19.03], [19.46, 23.19]], "hk5-1": [[3.99, 7.4], [7.97, 12.5], [13.03, 17.1], [17.68, 21.75]], "hk5-2": [[5.14, 8.16], [8.75, 12.07], [12.58, 16.5], [17.03, 20.44]], "hk5-3": [[5.04, 9.14], [9.72, 14.43], [14.98, 19.16], [19.78, 23.53]], "hk5-4": [[5.07, 8.7], [9.26, 13.25], [13.79, 18.17], [18.73, 23.03]], "hk5-5": [[5.23, 9.09], [9.67, 14.05], [14.61, 18.47], [19.07, 22.85]], "hk5-6": [[5.24, 8.89], [9.47, 13.4], [13.97, 18.0], [18.59, 23.03]], "hk6-1": [[4.13, 7.25], [7.83, 11.02], [11.52, 14.97], [15.57, 18.93]], "hk6-2": [[5.05, 8.53], [9.12, 12.73], [13.3, 17.06], [17.66, 21.33]], "hk6-3": [[5.08, 8.59], [9.12, 12.5], [13.02, 17.19], [17.77, 21.65]], "hk6-4": [[5.05, 8.88], [9.46, 13.25], [13.79, 17.72], [18.29, 22.74]], "hk6-5": [[5.25, 8.97], [9.56, 13.17], [13.72, 17.36], [17.95, 22.25]], "hk6-6": [[5.24, 9.52], [10.07, 13.84], [14.35, 19.0], [19.53, 23.63]]};
+
+function p1Render(){const m=P1ALL[p1i],a=p1ans[p1i],done=a!==undefined;
+ $('#p1').innerHTML=`<div class="q p1q" data-p="${p1i}"><div class="grid2" style="align-items:start"><div><img src="${m.img}" alt="Tranh ${p1i+1}" style="width:100%;max-height:430px;object-fit:contain;background:#f6f1f3;border-radius:14px;border:1px solid #eadde3"><audio id="p1aud" controls preload="auto" src="${m.aud}" style="width:100%;margin-top:8px"></audio><div class="rp"><button class="btn" data-rp="start">⏮ Nghe lại từ đầu</button><button class="btn" data-rp="back">⏪ Lùi 5s</button>${SEG[m.aud.split("/").pop().replace(".mp3","")]?["A","B","C","D"].map((l,k)=>`<button class="btn" data-rp="${k}">🔁 ${l}</button>`).join(""):""}<button class="btn ${p1slow?"pri":""}" data-rp="slow">🐢 ${p1slow?"0.75×":"1×"}</button></div><div style="font-size:.8em;color:var(--mut);margin-top:4px">${m.src}</div></div><div><p class="qs"><b>${p1i+1}.</b>Chọn câu mô tả đúng nhất bức tranh.</p><div class="opts" style="grid-template-columns:1fr">${m.o.map((o,k)=>{let c='opt';if(done){if(k===m.a)c+=' ok';else if(k===a)c+=' no'}return `<button class="${c}" data-p1k="${k}"><i>${L[k]}</i><span class="ot" style="filter:${done||p1show[p1i]?'none':'blur(6px)'}">${o}</span></button>`}).join('')}</div><p><button class="btn" data-p1show>👁 Hiện 4 câu</button></p>${done?`<div class="why" style="display:block">✅ <b>${L[m.a]}. ${m.o[m.a]}</b> — ${m.why||m.w}<div style="margin-top:.5em"><b>💡 Mẹo:</b> ${m.tip}</div><div style="margin-top:.5em"><b>Dịch 4 câu:</b><ol type="A" style="margin:.2em 0 0;padding-left:1.4em">${m.o.map((o,k)=>`<li${k===m.a?' style="font-weight:700;color:var(--ok)"':''}>${o}<br><span style="color:var(--mut)">${m.tr[k]}</span></li>`).join('')}</ol></div>${Object.keys(m.wrong).length?'<ul style="margin:.5em 0 0;padding-left:1.2em">'+Object.entries(m.wrong).map(([k,v])=>`<li><b>${k}</b> sai: ${v}</li>`).join('')+'</ul>':''}${m.voc.length?'<div style="margin-top:.5em">'+m.voc.map(v=>`<span class="pill">${v.en} (${v.pos}) · ${v.vi}</span>`).join('')+'</div>':''}</div>`:''}${qnote('p1_'+p1i)}</div></div></div>`;
+ {const au=$('#p1aud');au.playbackRate=p1slow?.75:1;au.ontimeupdate=()=>{if(p1stop!==null&&au.currentTime>=p1stop){au.pause();p1stop=null}}}
+ $('#p1Count').textContent=`Câu ${p1i+1} / ${P1ALL.length}`;
+ const ok=Object.entries(p1ans).filter(([i,a])=>P1ALL[i].a===a).length;$('#p1Score').textContent=`Đúng ${ok}/${Object.keys(p1ans).length}`;
+ $('#p1dots').innerHTML=P1ALL.map((m,i)=>`<button data-p1go="${i}" class="${i===p1i?'on':''} ${p1ans[i]===undefined?'':(p1ans[i]===m.a?'ok':'no')}">${i+1}</button>`).join('');}
+const p1show={};
+$('#p1Prev').onclick=()=>{p1i=Math.max(0,p1i-1);p1Render()};$('#p1Next').onclick=()=>{p1i=Math.min(P1ALL.length-1,p1i+1);p1Render()};
+p1Render();
+const EXTR=["Mỗi ứng viên phải nộp sơ yếu lý lịch.", "Tất cả nhân viên nên tham dự cuộc họp.", "Chủ của chúng tôi cho nghỉ phép có lương.", "Hãy xin người giám sát phê duyệt.", "Cô ấy đang ăn trưa với một đồng nghiệp.", "Khách hàng đã ký hợp đồng hôm nay.", "Một đại diện bán hàng sẽ gọi cho bạn.", "Người tham gia sẽ nhận được chứng nhận."];
+const VQ=VOC.map((v,i)=>{const others=VOC.filter((_,j)=>j!==i).map(x=>x[2]);const pick=[others[(i+1)%7],others[(i+3)%7],others[(i+5)%7]];const pos=i%4;const o=pick.slice();o.splice(pos,0,v[2]);return {q:`<b>${v[0]}</b> nghĩa là gì?`,o,a:pos,w:`<i>${v[3]}</i> → ${EXTR[i]}`}});
+$('#voc').innerHTML=VOC.map(v=>`<div class="vc"><button class="say" data-say="${v[0]}" title="Nghe">🔊</button><span class="w">${v[0]}</span><span class="ty">(${v[1]})</span><span class="m">${v[2]}</span><span class="e">${v[3]}</span></div>`).join('');
+function fmt(s){const n=Math.abs(s);return (s<0?'−':'')+Math.floor(n/60)+':'+String(n%60).padStart(2,'0')}
+function paint(){$('#timer').textContent=fmt(tLeft);$('#timer').classList.toggle('over',tLeft<0)}
+function stopT(){clearInterval(tRun);tRun=null;$('#tBtn').textContent='⏱ Bắt đầu'}
+function startT(){if(tRun){stopT();return}tRun=setInterval(()=>{tLeft--;paint()},1000);$('#tBtn').textContent='⏸ Dừng'}
+function go(i){cur=Math.max(0,Math.min(S.length-1,i));S.forEach((s,k)=>s.classList.toggle('on',k===cur));
+ document.querySelectorAll('#ag li').forEach((li,k)=>{li.classList.toggle('on',k===cur);li.classList.toggle('done',k<cur)});
+ const s=S[cur];$('#stepLbl').textContent=cur?`Phần ${cur}/${S.length-1}`:'Mở đầu';$('#bookLbl').textContent='📖 Sách '+s.dataset.p;
+ stopT();tLeft=+s.dataset.m*60;paint();$('#stage').scrollTop=0;try{localStorage.setItem('hv_b1_cur',cur)}catch(e){}}
+function toast(m){const t=$('#toast');t.textContent=m;t.style.display='block';clearTimeout(toast.h);toast.h=setTimeout(()=>t.style.display='none',1600)}
+document.addEventListener('click',e=>{
+ const g=e.target.closest('[data-go]');if(g){go(+g.dataset.go);return}
+ const rp=e.target.closest('[data-rp]');if(rp){const au=$('#p1aud'),v=rp.dataset.rp,sg=SEG[au.getAttribute('src').split('/').pop().replace('.mp3','')];
+  if(v==='slow'){p1slow=!p1slow;au.playbackRate=p1slow?.75:1;rp.textContent='🐢 '+(p1slow?'0.75×':'1×');rp.classList.toggle('pri',p1slow);return}
+  if(v==='start'){p1stop=null;au.currentTime=0;au.play();return}
+  if(v==='back'){p1stop=null;au.currentTime=Math.max(0,au.currentTime-5);au.play();return}
+  const [a,b]=sg[+v];p1stop=b;const go=()=>{au.currentTime=a;au.playbackRate=p1slow?.75:1;au.play()};if(au.readyState>=1)go();else{au.addEventListener('loadedmetadata',go,{once:true});au.load()}return}
+ if(e.target.closest('[data-p1show]')){p1show[p1i]=true;p1Render();return}
+ const pk=e.target.closest('[data-p1k]');if(pk){if(p1ans[p1i]===undefined){p1ans[p1i]=+pk.dataset.p1k;p1Render()}return}
+ const pg=e.target.closest('[data-p1go]');if(pg){p1i=+pg.dataset.p1go;p1Render();return}
+ const o=e.target.closest('.opt');if(o){const q=o.closest('.q'),m=SETS[q.dataset.set][+q.dataset.i];if(q.classList.contains('done'))return;
+  const k=+o.dataset.k;q.querySelectorAll('.opt').forEach((b,j)=>{if(j===m.a)b.classList.add('ok');else if(j===k)b.classList.add('no')});q.classList.add('done');return}
+ const sy=e.target.closest('[data-say]');if(sy){e.stopPropagation();try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(sy.dataset.say);u.lang='en-US';u.rate=.85;speechSynthesis.speak(u)}catch(_){}return}
+ const vc=e.target.closest('.vc');if(vc){vc.classList.toggle('cov');return}
+ const rv=e.target.closest('[data-rv]');if(rv){rv.querySelector('.rv').classList.toggle('hide');rv.querySelectorAll('.blank .hide, .blank .shown').forEach(x=>{x.classList.toggle('hide');x.classList.toggle('shown')});return}
+});
+$('#vCover').onclick=()=>{const all=[...document.querySelectorAll('.vc')],c=!all.every(v=>v.classList.contains('cov'));all.forEach(v=>v.classList.toggle('cov',c));$('#vCover').textContent=c?'👀 Hiện nghĩa':'🙈 Che nghĩa (đố lớp)'};
+if(0)$('#zBtn').onclick=()=>{const t=`📚 BTVN Buổi 1 · TOEIC Online 500+ (làm trước 20:00 Thứ Tư 18/11)\n1️⃣ Sách tr. 10 · Mini test CĐ1 (từ câu 6): https://claude.ai/artifact/S3E8WXDgGLh2jQYVMTaYw8#mini-1\n2️⃣ Sách tr. 11–12 · Từ vựng Danh từ chỉ người: https://claude.ai/artifact/MDmRVh5ncDTCSTBJ67m1q2#p2-u1\n✅ Làm xong nhớ bấm ✓ trên trang lộ trình nhé!`;
+ (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>toast('Đã copy tin nhắn Zalo'),()=>{prompt('Copy tin nhắn:',t)})};
+$('#prev').onclick=()=>go(cur-1);$('#next').onclick=()=>go(cur+1);$('#tBtn').onclick=startT;
+$('#fUp').onclick=()=>{fs=Math.min(1.6,+(fs+.1).toFixed(2));document.documentElement.style.setProperty('--fs',fs);try{localStorage.setItem('hv_b1_fs',fs)}catch(e){}};
+$('#fDown').onclick=()=>{fs=Math.max(.7,+(fs-.1).toFixed(2));document.documentElement.style.setProperty('--fs',fs);try{localStorage.setItem('hv_b1_fs',fs)}catch(e){}};
+function full(){document.body.classList.toggle('full');try{if(!document.fullscreenElement)document.documentElement.requestFullscreen();else document.exitFullscreen()}catch(e){}}
+$('#fullBtn').onclick=full;
+document.addEventListener('keydown',e=>{if(e.target.matches('input,textarea'))return;if(e.key==='ArrowRight'||e.key==='PageDown')go(cur+1);else if(e.key==='ArrowLeft'||e.key==='PageUp')go(cur-1);else if(e.key==='f'||e.key==='F')full();else if(e.key==='t'||e.key==='T')startT()});
+document.querySelectorAll('.qnx').forEach(d=>d.outerHTML=qnote(d.dataset.k));
+const EN_MINI=[{"tr": "Một số phần của buổi trình diễn hàng không sẽ cực kỳ ồn, vì vậy ban tổ chức khuyên mang theo đồ bảo vệ tai.", "om": ["to V (không làm động từ chính)", "(n) lời khuyên", "(v) khuyên — hiện tại đơn", "(V-ing) không làm động từ chính"], "x": {"A": "“to advise” không thể làm động từ chính sau chủ ngữ.", "B": "advice là danh từ, câu đang thiếu động từ.", "D": "V-ing đứng một mình không làm vị ngữ được."}}, {"tr": "Thứ Hai tuần trước, phòng ban đã ăn mừng việc ông Okada vừa được thăng chức lên quản lý.", "om": ["tương lai tiếp diễn", "quá khứ đơn", "hiện tại tiếp diễn", "hiện tại đơn"], "x": {"A": "Tương lai — mâu thuẫn với “Last Monday”.", "C": "Hiện tại tiếp diễn — sai mốc thời gian.", "D": "Hiện tại đơn — sai mốc thời gian."}}, {"tr": "Xe đưa đón sẽ khởi hành lúc 8 giờ sáng, vì vậy vui lòng thu dọn hành lý sớm vào buổi sáng.", "om": ["V-ing", "hiện tại hoàn thành (số nhiều)", "tương lai tiếp diễn", "phân từ hoàn thành"], "x": {"A": "V-ing không làm động từ chính.", "B": "“have” đi với chủ ngữ số nhiều; hơn nữa việc chưa xảy ra.", "D": "having left không làm vị ngữ."}}, {"tr": "Máy tính tiền ở hiệu sách Pirkle tự động tính số lượng sách còn tồn kho.", "om": ["(v) tính toán", "(n) máy tính", "(V-ing)", "(n) phép tính"], "x": {"B": "Danh từ — câu đang thiếu động từ.", "C": "V-ing không làm động từ chính.", "D": "Danh từ — câu đang thiếu động từ."}}, {"tr": "Núi Teide là đỉnh núi duy nhất của Tây Ban Nha cao trên 3.500 mét.", "om": ["(v) nguyên mẫu", "(v) hiện tại đơn số ít", "to V", "V-ing"], "x": {"A": "“that” thay cho “peak” (số ít) → không dùng rise.", "C": "to V không làm động từ chính.", "D": "V-ing không làm động từ chính."}}],EN_T=[{"tr": "Phòng tài chính sẽ tổ chức một buổi vừa ăn trưa vừa học vào thứ Năm.", "om": ["bị động hiện tại", "to V", "tương lai tiếp diễn", "hiện tại hoàn thành"], "x": {"A": "Bị động — nhưng phòng ban là người tổ chức (chủ động).", "B": "to V không làm động từ chính.", "D": "Hiện tại hoàn thành không đi với mốc tương lai “on Thursday”."}}, {"tr": "Chiều nay, ông Davis sẽ sắp xếp lịch phỏng vấn cho các ứng viên vào vòng cuối.", "om": ["HTHT tiếp diễn", "tương lai tiếp diễn", "bị động quá khứ", "HTHT (số nhiều)"], "x": {"A": "Không hợp với “Later today” (sắp tới).", "C": "Bị động + quá khứ — sai cả hai.", "D": "“have” đi với số nhiều; ông Davis là số ít."}}, {"tr": "Hiện tại, Ngân hàng Marco đang tặng 100 đô cho khách hàng mới khi mở tài khoản.", "om": ["nguyên mẫu", "V-ing", "hiện tại tiếp diễn", "HTHT tiếp diễn"], "x": {"A": "Chủ ngữ số ít cần offers/is offering.", "B": "V-ing không làm động từ chính.", "D": "Cần mốc “since/for”; “At present” → hiện tại tiếp diễn."}}, {"tr": "Công ty Corracar đang tìm cách mới để mở rộng mạng lưới vận tải.", "om": ["quá khứ đơn", "to be V-ing", "hiện tại tiếp diễn", "bị động QKHT"], "x": {"A": "Không có mốc quá khứ.", "B": "to-V không làm động từ chính.", "D": "look for không dùng bị động ở đây (công ty tự tìm)."}}, {"tr": "Jasper Associates hiện có hợp đồng với 22 nhà cung cấp thực phẩm khác nhau.", "om": ["hiện tại tiếp diễn", "hiện tại đơn", "tương lai đơn", "quá khứ đơn"], "x": {"A": "“have” mang nghĩa sở hữu là động từ trạng thái → không chia V-ing.", "C": "“currently” là hiện tại, không phải tương lai.", "D": "Sai mốc thời gian."}}, {"tr": "Đến cuối tháng Tư, trưởng phòng nhân sự sẽ hoàn thành xong việc đánh giá nhân viên.", "om": ["hiện tại đơn", "sai cấu trúc", "bị động tương lai", "tương lai hoàn thành"], "x": {"A": "Không hợp với “By + mốc tương lai”.", "B": "“had completely” sai ngữ pháp.", "C": "Bị động — nhưng trưởng phòng là người làm (chủ động)."}}, {"tr": "M&S Home Furnishings đã sản xuất đồ nội thất theo yêu cầu ở Aberdeen hơn một thập kỷ.", "om": ["hiện tại đơn", "hiện tại tiếp diễn", "hiện tại hoàn thành", "nguyên mẫu"], "x": {"A": "Không đi với “for + khoảng thời gian”.", "B": "Không đi với “for more than a decade”.", "D": "Chủ ngữ số ít — và sai thì."}}, {"tr": "Trong ba năm qua, sản lượng của nhà máy Warner đã tăng gấp đôi.", "om": ["HTHT (số ít)", "V-ing", "HTHT (số nhiều)", "quá khứ hoàn thành"], "x": {"B": "V-ing không làm động từ chính.", "C": "“production” là số ít → has.", "D": "QKHT cần một mốc trong quá khứ."}}, {"tr": "Từ ngày 1/10, bà Lawrence đã lên kế hoạch ngân sách công tác của phòng.", "om": ["nguyên mẫu", "quá khứ đơn", "hiện tại hoàn thành", "tương lai tiếp diễn"], "x": {"A": "Sai thì và sai chủ ngữ số ít.", "B": "“Since + mốc” không dùng quá khứ đơn.", "D": "Không phải việc tương lai."}}, {"tr": "Theo báo cáo, nhu cầu thợ máy diesel sẽ tăng 20% vào năm sau.", "om": ["nguyên mẫu", "hiện tại hoàn thành", "tương lai đơn", "hiện tại đơn"], "x": {"A": "Chủ ngữ “demand” số ít; sai thì.", "B": "Không đi với “next year”.", "D": "Không hợp với mốc tương lai “next year”."}}];MINI.forEach((m,i)=>Object.assign(m,EN_MINI[i]));TENSE.forEach((m,i)=>Object.assign(m,EN_T[i]));
+const SETS={mini:MINI,tense:TENSE,quiz7:QUIZ7,vq:VQ};
+mcq('#mini','mini',MINI);mcq('#tense','tense',TENSE);mcq('#quiz7','quiz7',QUIZ7);mcq('#vq','vq',VQ);
+S.forEach((sl,i)=>{const d=document.createElement('div');d.className='gvnote';let v='';try{v=localStorage.getItem('hv_b1_note_'+i)||''}catch(e){}
+ d.innerHTML=`<label>📝 Ghi chú của em · ${sl.dataset.n}<span class="sv" style="font-weight:500;opacity:.7">tự lưu</span></label><textarea data-gv="${i}" placeholder="Ghi lại điều em mới học, lỗi em hay sai, câu muốn hỏi cô…"></textarea>`;
+ d.querySelector('textarea').value=v;sl.appendChild(d)});
+document.addEventListener('input',e=>{const qn=e.target.closest('[data-qn]');if(qn){try{localStorage.setItem('hv_b1_qn_'+qn.dataset.qn,qn.value)}catch(err){}return}
+ const t=e.target.closest('[data-gv]');if(!t)return;try{localStorage.setItem('hv_b1_note_'+t.dataset.gv,t.value)}catch(err){}const sv=t.parentNode.querySelector('.sv');sv.textContent='đã lưu ✓';clearTimeout(sv.h);sv.h=setTimeout(()=>sv.textContent='tự lưu',1200)});
+document.addEventListener('keydown',e=>{if(e.target.matches('textarea'))e.stopPropagation()},true);
+go(cur);
+</script>
+</body>
+</html>
