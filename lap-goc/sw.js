@@ -1,5 +1,5 @@
 // Lấp Gốc TOEIC – service worker: mở nhanh trang chính, vẫn luôn lấy bản mới khi có mạng
-const V = 'lapgoc-v1';
+const V = 'lapgoc-v2';
 const CORE = ['./', './lg.js', './manifest.webmanifest', './icons/icon-192.png', './icons/apple-touch-icon.png'];
 self.addEventListener('install', e => {
   self.skipWaiting();
