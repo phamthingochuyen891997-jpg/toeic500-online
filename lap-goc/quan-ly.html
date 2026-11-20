@@ -115,7 +115,7 @@ function render(){
 async function loadProg(){
   try{ const s=await getDocs(collection(db,"lg_progress")); const P=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.updatedAt?.toMillis?.()||0)-(a.updatedAt?.toMillis?.()||0));
     $("pb").innerHTML=P.length?P.map(p=>{ const st=rows.find(r=>r.id===p.id); const nm=st?st.name:(p.name||p.id); const m=p.sum||{};
-      return `<tr><td><div class="e">${esc(nm)}</div><div class="n">${esc(p.id)}</div></td><td><b>${m.checkpoints||0}/32</b><div class="n">${Math.round((m.checkpoints||0)/32*100)}%</div></td><td>${m.stations||0}/128<div class="n">✦ ${m.exp||0} EXP</div></td><td>${m.acc==null?"–":"<b>"+Math.round(m.acc*100)+"%</b>"}</td><td>${m.streak?"🔥 "+m.streak+" ngày":"–"}<div class="n">📒 ${m.wrong||0} câu sai</div></td><td><div class="n">${fmt(p.updatedAt)}</div></td></tr>`; }).join(""):'<tr><td colspan="6">Chưa có học viên nào bắt đầu học.</td></tr>';
+      return `<tr><td><div class="e">${esc(nm)}</div><div class="n">${esc(p.id)}</div></td><td><b>${m.checkpoints||0}/32</b><div class="n">${m.place?"🌱 Đầu vào "+esc(m.place):"Chưa làm đầu vào"}</div></td><td>${m.stations||0}/128<div class="n">✦ ${m.exp||0} EXP</div></td><td>${m.acc==null?"–":"<b>"+Math.round(m.acc*100)+"%</b>"}</td><td>${m.streak?"🔥 "+m.streak+" ngày":"–"}<div class="n">📒 ${m.wrong||0} câu sai</div></td><td><div class="n">${fmt(p.updatedAt)}</div></td></tr>`; }).join(""):'<tr><td colspan="6">Chưa có học viên nào bắt đầu học.</td></tr>';
   }catch(e){ $("pb").innerHTML=`<tr><td colspan="6">Không tải được tiến độ (${esc(e.code)}). Kiểm tra lại Rules trên Firebase.</td></tr>`; }
 }
 $("pReload").onclick=loadProg;

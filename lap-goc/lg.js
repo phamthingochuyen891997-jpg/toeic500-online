@@ -19,7 +19,7 @@
   }
   function summary(S) {
     var done = S.done || {}, cps = 0;
-    for (var i = 0; i < 32; i++) { if ([0, 1, 2, 3].every(function (k) { return done[i + "-" + k]; })) cps++; else break; }
+    for (var i = 0; i < 32; i++) { if ([0, 1, 2, 3].every(function (k) { return done[i + "-" + k]; })) cps++; }
     var acc = (S.acc || []).length ? (S.acc.reduce(function (a, b) { return a + b; }, 0) / S.acc.length) : null;
     var days = S.days || [], set = {}, n = 0, d = new Date();
     days.forEach(function (x) { set[x] = 1; });
@@ -27,7 +27,7 @@
     if (!set[ymd(d)]) d.setDate(d.getDate() - 1);
     while (set[ymd(d)]) { n++; d.setDate(d.getDate() - 1); }
     var stars = 0; Object.keys(S.best || {}).forEach(function (k) { stars += S.best[k] >= 1 ? 3 : S.best[k] >= 0.9 ? 2 : S.best[k] >= 0.6 ? 1 : 0; });
-    return { stations: Object.keys(done).length, checkpoints: cps, exp: S.exp || 0, streak: n, acc: acc, wrong: Object.keys(S.wrong || {}).length, lastDay: days[days.length - 1] || "" };
+    return { stations: Object.keys(done).length, checkpoints: cps, exp: S.exp || 0, streak: n, acc: acc, wrong: Object.keys(S.wrong || {}).length, lastDay: days[days.length - 1] || "", place: S.place ? (S.place.c + "/" + S.place.t + " · " + S.place.level) : "" };
   }
   var timer = null, pending = null;
   async function flush() {
