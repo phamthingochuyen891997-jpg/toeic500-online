@@ -13,7 +13,7 @@ var oS=ss.speak.bind(ss),oC=ss.cancel.bind(ss);
 function best(){var v=ss.getVoices().filter(function(x){return/^en[-_]/i.test(x.lang)}),P=[/natural/i,/premium|enhanced/i,/^(Ava|Samantha|Allison|Zoe|Evan|Nathan|Serena|Daniel)/i,/Google (US|UK) English/i,/Aria|Jenny|Guy|Sonia/i,/en[-_]US/i];
  for(var i=0;i<P.length;i++){for(var j=0;j<v.length;j++){if(P[i].test(v[j].name)||P[i].test(v[j].lang))return v[j]}}return v[0]}
 function nat(u){try{var v=best();if(v){u.voice=v;u.lang=v.lang}}catch(e){}oS(u)}
-function src(h){var e=PK[h],f=B+'pack'+e[0]+'.bin',mk=function(b){return URL.createObjectURL(new Blob([b],{type:'audio/mpeg'}))};
+function src(h){var e=PK[h],f=B+'pack'+e[0]+'.mp3',mk=function(b){return URL.createObjectURL(new Blob([b],{type:'audio/mpeg'}))};
  if(PB[f])return PB[f].then(function(b){return mk(b.slice(e[1],e[1]+e[2]))});
  return fetch(f,{headers:{Range:'bytes='+e[1]+'-'+(e[1]+e[2]-1)}}).then(function(r){if(r.status===206)return r.arrayBuffer().then(mk);
   PB[f]=r.arrayBuffer();return PB[f].then(function(b){return mk(b.slice(e[1],e[1]+e[2]))})})}
