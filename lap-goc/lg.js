@@ -37,7 +37,7 @@
   window.LG = {
     load: async function () { try { var c = await fb(); var s = await c.F.getDoc(c.F.doc(c.db, "lg_progress", c.email)); return s.exists() ? s.data() : null; } catch (e) { return null; } },
     queue: function (S) { pending = JSON.parse(JSON.stringify(S)); clearTimeout(timer); timer = setTimeout(flush, 1500); },
-    teacher: async function () { try { var c = await fb(); var s = await c.F.getDoc(c.F.doc(c.db, "users", c.u.uid)); return s.exists() && s.data().role === "teacher"; } catch (e) { return false; } }
+    teacher: async function () { try { var c = await fb(); var s = await c.F.getDoc(c.F.doc(c.db, "users", c.u.uid)); if (s.exists() && s.data().role === "teacher") return true; var g = await c.F.getDoc(c.F.doc(c.db, "lg_students", (c.u.email || "").toLowerCase())); return g.exists() && g.data().gv === true; } catch (e) { return false; } }
   };
   window.addEventListener("pagehide", flush);
   document.addEventListener("visibilitychange", function () { if (document.visibilityState === "hidden") flush(); });
