@@ -1,5 +1,31 @@
 <!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Lấp Gốc TOEIC · Lộ trình tự học 500+ · Ms. Ngọc Huyền</title>
+<script>/* Lấp Gốc · giọng đọc tự nhiên: phát file thu sẵn, thiếu thì dùng giọng tốt nhất của máy */
+(function(){var B='tts/',IX=null,PK=null,PB={},tok=0,ss=window.speechSynthesis;if(!ss)return;
+var A=new Audio();A.preload='auto';
+var SIL='data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjYwLjE2LjEwMAAAAAAAAAAAAAAA//NwwAAAAAAAAAAAAEluZm8AAAAPAAAABAAAAlgAenp6enp6enp6enp6enp6enp6enp6enp6pqampqampqampqampqampqampqampqamptPT09PT09PT09PT09PT09PT09PT09PT09P/////////////////////////////////AAAAAExhdmM2MC4zMQAAAAAAAAAAAAAAACQCcQAAAAAAAAJY+/rsqgAAAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NCxKMAAANIAAAAAFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV',un=false;
+function unlock(){if(un)return;un=true;try{A.src=SIL;var p=A.play();if(p&&p.catch)p.catch(function(){un=false})}catch(e){un=false}}
+['pointerdown','touchend','click','keydown'].forEach(function(t){document.addEventListener(t,unlock,{capture:true,passive:true})});
+function norm(t){return String(t||'').replace(/<[^>]+>/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim()}
+function fnv(s){var h=0x811c9dc5;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,0x01000193)>>>0}return('0000000'+h.toString(16)).slice(-8)}
+try{fetch(B+'index.json').then(function(r){return r.json()}).then(function(a){if(Array.isArray(a))IX=new Set(a);else{PK=a;IX=new Set(Object.keys(a))}}).catch(function(){})}catch(e){}
+var oS=ss.speak.bind(ss),oC=ss.cancel.bind(ss);
+function best(){var v=ss.getVoices().filter(function(x){return/^en[-_]/i.test(x.lang)}),P=[/natural/i,/premium|enhanced/i,/^(Ava|Samantha|Allison|Zoe|Evan|Nathan|Serena|Daniel)/i,/Google (US|UK) English/i,/Aria|Jenny|Guy|Sonia/i,/en[-_]US/i];
+ for(var i=0;i<P.length;i++){for(var j=0;j<v.length;j++){if(P[i].test(v[j].name)||P[i].test(v[j].lang))return v[j]}}return v[0]}
+function nat(u){try{var v=best();if(v){u.voice=v;u.lang=v.lang}}catch(e){}oS(u)}
+function src(h){var e=PK[h],f=B+'pack'+e[0]+'.bin',mk=function(b){return URL.createObjectURL(new Blob([b],{type:'audio/mpeg'}))};
+ if(PB[f])return PB[f].then(function(b){return mk(b.slice(e[1],e[1]+e[2]))});
+ return fetch(f,{headers:{Range:'bytes='+e[1]+'-'+(e[1]+e[2]-1)}}).then(function(r){if(r.status===206)return r.arrayBuffer().then(mk);
+  PB[f]=r.arrayBuffer();return PB[f].then(function(b){return mk(b.slice(e[1],e[1]+e[2]))})})}
+ss.cancel=function(){tok++;try{A.pause()}catch(e){}oC()};
+ss.speak=function(u){var h=fnv(norm(u&&u.text));if(!IX||!IX.has(h))return nat(u);
+ tok++;var my=tok;try{A.pause()}catch(e){}oC();
+ var bad=function(){if(my!==tok)return;tok++;nat(u)};
+ var go=function(x){if(my!==tok)return;A.onended=function(){if(my!==tok)return;tok++;if(u.onend)try{u.onend({})}catch(e){}};A.onerror=bad;A.src=x;
+  var p=A.play();if(p&&p.catch)p.catch(function(e){if(e&&e.name==='AbortError')return;bad()})};
+ if(!PK)go(B+h+'.mp3');else src(h).then(go,bad)};
+})();</script>
+
 <meta name="description" content="Lộ trình tự học TOEIC 500+ của cô Ngọc Huyền: 32 checkpoint, ngữ pháp – nghe – đọc, audio giọng tự nhiên, giải thích tiếng Việt từng câu. Học thử miễn phí.">
 <meta property="og:title" content="Lấp Gốc TOEIC · Lộ trình tự học 500+">
 <meta property="og:description" content="32 checkpoint · Ngữ pháp · Nghe · Đọc · Từ vựng. Học thử miễn phí cùng cô Ngọc Huyền.">
