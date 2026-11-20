@@ -1,0 +1,19 @@
+{
+  "name": "Lấp Gốc TOEIC · Ms. Ngọc Huyền",
+  "short_name": "Lấp Gốc",
+  "description": "Lộ trình tự học TOEIC 500+ của cô Ngọc Huyền",
+  "id": "/toeic500-online/lap-goc/",
+  "start_url": "/toeic500-online/lap-goc/?app=1",
+  "scope": "/toeic500-online/lap-goc/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "lang": "vi",
+  "background_color": "#EEF3E6",
+  "theme_color": "#2F5D5A",
+  "icons": [
+    {"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "icons/maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable"},
+    {"src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}
