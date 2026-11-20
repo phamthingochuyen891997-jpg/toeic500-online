@@ -1,13 +1,14 @@
 <!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Quản lý học viên · Lấp Gốc TOEIC</title><meta name="robots" content="noindex">
 <style>
-:root{--bg:#EEF3E6;--card:#FFFDF8;--ink:#22403D;--muted:#6E8580;--line:#D9E6DF;--accent:#C25B6E;--deep:#2F5D5A;--bad:#B4232C;--ok:#1E7A4D;--soft:#F7E4E2}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "DM Sans","Segoe UI",system-ui,sans-serif}
+:root{--bg:#FFF7F0;--card:#FFFFFF;--ink:#22403D;--muted:#6E8580;--line:#D9E6DF;--accent:#C25B6E;--deep:#2F5D5A;--bad:#B4232C;--ok:#1E7A4D;--soft:#F7E4E2}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "Be Vietnam Pro","Segoe UI",system-ui,sans-serif}
 .wrap{max-width:980px;margin:0 auto;padding:20px 16px 60px}
-header{display:flex;align-items:center;gap:12px;margin-bottom:18px}.mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--deep),var(--accent));color:#fff;display:grid;place-items:center;font:700 20px system-ui}
-h1{font:700 1.35rem Georgia,serif;margin:0}header small{display:block;color:var(--muted)}header .sp{flex:1}
+header{display:flex;align-items:center;gap:12px;margin-bottom:18px}.mark{width:52px;height:52px;border-radius:14px;overflow:hidden;flex:none;box-shadow:0 0 0 1px #F0E2DA}.mark svg{display:block}
+.lw{font:800 1.5rem/1 "Be Vietnam Pro",system-ui,sans-serif;letter-spacing:-.015em;color:#1E3F3C;display:flex;align-items:center;gap:8px}.lw span{color:#E8566F}.lw b{font:700 .7rem/1 "Be Vietnam Pro",system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:#1E5C58;border-radius:999px;padding:4px 9px}
+h1{font:700 .98rem "Be Vietnam Pro",system-ui,sans-serif;margin:5px 0 0;color:#1E5C58}header small{display:block;color:var(--muted)}header .sp{flex:1}
 .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:16px;box-shadow:0 4px 18px rgba(47,93,90,.08)}
-h2{font:700 1.05rem Georgia,serif;margin:0 0 12px}
+h2{font:800 1.05rem "Be Vietnam Pro",system-ui,sans-serif;margin:0 0 12px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
 label{display:grid;gap:4px;font-weight:600;font-size:.85rem}
 input,textarea{font:inherit;color:inherit;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 11px;width:100%}
@@ -27,8 +28,8 @@ td .e{font-weight:600;word-break:break-all}td .n{color:var(--muted);font-size:.8
 .hide{display:none}
 .tip{background:var(--soft);border-radius:12px;padding:10px 12px;font-size:.88rem;color:var(--deep)}
 @media (max-width:640px){th:nth-child(3),td:nth-child(3){display:none}.pt th:nth-child(3),.pt td:nth-child(3){display:table-cell}}
-</style></head><body><div class="wrap">
-<header><div class="mark">🪷</div><div><h1>Quản lý học viên</h1><small>Lấp Gốc TOEIC · lộ trình tự học 500+ · chỉ cô Huyền đăng nhập được</small></div><div class="sp"></div><button class="btn ghost sm hide" id="out">Đăng xuất</button></header>
+</style><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&display=swap"><link rel="icon" type="image/png" href="icons/favicon.png"><meta name="theme-color" content="#1E5C58"></head><body><div class="wrap">
+<header><div class="mark"><svg viewBox="0 0 100 100" width="52" height="52" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#FFF7F0"/><g transform="translate(6 6) scale(0.88)"><g transform="translate(50 57)"><path transform="rotate(-62)" d="M0 0 C-11 -11.4 -6.82 -25.8 0 -30 C6.82 -25.8 11 -11.4 0 0Z" fill="#E8566F"/><path transform="rotate(62)" d="M0 0 C-11 -11.4 -6.82 -25.8 0 -30 C6.82 -25.8 11 -11.4 0 0Z" fill="#E8566F"/><path transform="rotate(-30)" d="M0 0 C-12.5 -13.68 -7.75 -30.96 0 -36 C7.75 -30.96 12.5 -13.68 0 0Z" fill="#F4808F"/><path transform="rotate(30)" d="M0 0 C-12.5 -13.68 -7.75 -30.96 0 -36 C7.75 -30.96 12.5 -13.68 0 0Z" fill="#F4808F"/><path transform="rotate(0)" d="M0 0 C-14 -15.96 -8.68 -36.12 0 -42 C8.68 -36.12 14 -15.96 0 0Z" fill="#FBB6C0"/></g><path d="M19 61 H81" stroke="#3FA48B" stroke-width="4.2" stroke-linecap="round"/><g fill="none" stroke="#EDA737" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"><path d="M50 67 V92"/><path d="M50 67 C50 79 35 78 33 92"/><path d="M50 67 C50 79 65 78 67 92"/></g></g></svg></div><div><div class="lw">Lấp <span>Gốc</span><b>Giáo viên</b></div><h1>Quản lý học viên</h1><small>TOEIC 500+ · lộ trình tự học · chỉ cô Huyền đăng nhập được</small></div><div class="sp"></div><button class="btn ghost sm hide" id="out">Đăng xuất</button></header>
 
 <div id="loginBox" class="card login"><h2>Đăng nhập giáo viên</h2>
 <p style="color:var(--muted);font-size:.9rem;margin-top:0">Dùng tài khoản giáo viên của trang My English Workspace (email + mật khẩu).</p>
